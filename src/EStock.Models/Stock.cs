@@ -8,8 +8,8 @@ namespace EStock.Models
 {
     public class Stock
     {
-        public Guid Id { get; set; }
-        public Guid CompanyId { get; set; }
+        public int Id { get; set; }
+        public int CompanyId { get; set; }
         public decimal StockPrice { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }

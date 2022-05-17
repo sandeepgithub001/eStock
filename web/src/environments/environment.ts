@@ -5,7 +5,6 @@
 export const environment = {
   production: false,
   apiEndpoint: 'http://localhost:50737',
-  GoogleOAuthClientId: '639504230356-7f1f8u9808hkuh96td25ni89jooedllc.apps.googleusercontent.com',
   defaultPageSize: 25,
 };
 

@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "onecasav2": {
+    "estock": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/onecasav2",
+            "outputPath": "dist/estock",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -70,18 +70,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "onecasav2:build"
+            "browserTarget": "estock:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "onecasav2:build:production"
+              "browserTarget": "estock:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "onecasav2:build"
+            "browserTarget": "estock:build"
           }
         },
         "test": {
@@ -117,7 +117,7 @@
         }
       }
     },
-    "onecasav2-e2e": {
+    "estock-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "prefix": "",
@@ -126,11 +126,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "onecasav2:serve"
+            "devServerTarget": "estock:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "onecasav2:serve:production"
+              "devServerTarget": "estock:serve:production"
             }
           }
         },
@@ -146,5 +146,5 @@
       }
     }
   },
-  "defaultProject": "onecasav2"
+  "defaultProject": "estock"
 }
