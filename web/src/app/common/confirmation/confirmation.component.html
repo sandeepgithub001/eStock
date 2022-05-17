@@ -1,0 +1,45 @@
+<section class="leaves-navbar" id="main">
+    <div class="main-page-navigation sub-menu" role="navigation" aria-label="Main Navigation">
+        <tabset class="main-page-navigation sub-menu" role="navigation" aria-label="Main Navigation">
+
+            <tab heading="Pending" (selectTab)="onSelect($event)">
+                <section id="tabs" class="d-flex p-0 m-0">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="">
+                                <app-view-leaves></app-view-leaves>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </tab>
+
+            <tab heading="Approved" class="mt-2" (selectTab)="onSelect($event)">
+                <section id="tabs" class="project-tab formboxTab">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="">
+                                <app-autotaken-taken-rejected-cancelled-leaves>
+                                </app-autotaken-taken-rejected-cancelled-leaves>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </tab>
+
+            <tab heading="Taken" class="mt-2" (selectTab)="onSelect($event)">
+                <section id="tabs" class="project-tab formboxTab">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="">
+                                <app-autotaken-taken-rejected-cancelled-leaves>
+                                </app-autotaken-taken-rejected-cancelled-leaves>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </tab>
+
+        </tabset>
+    </div>
+</section>

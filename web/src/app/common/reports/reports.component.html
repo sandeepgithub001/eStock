@@ -1,0 +1,23 @@
+<section class="leaves-navbar" id="main">
+  <div class="main-page-navigation sub-menu" role="navigation" aria-label="Main Navigation">
+      <tabset class="main-page-navigation sub-menu" role="navigation" aria-label="Main Navigation">
+
+          <tab heading="Summary Report" (selectTab)="onSelect($event)">
+              <section id="tabs">
+                          <div class="">
+                              <app-summary-report></app-summary-report>
+                          </div>
+              </section>
+          </tab>
+
+          <tab heading="LOP Report" (selectTab)="onSelect($event)">
+              <section id="tabs" >
+                          <div class="">
+                            <app-lop-report></app-lop-report>
+                          </div>
+              </section>
+          </tab>
+
+      </tabset>
+  </div>
+</section>

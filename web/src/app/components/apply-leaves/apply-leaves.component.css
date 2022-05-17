@@ -1,0 +1,19 @@
+body-cont{ padding: 0;}
+
+.attachment-region{ border: 1px solid #ced4da; clear: both; padding: 20px; margin-top: 10px; border-radius: .25rem}
+
+.attachment-tags{ margin: 0; padding: 0}
+
+.attachment-tags ul{ margin: 0; padding: 0}
+
+.attachment-tags ul li{ margin: 0 5px 5px 0; padding: 5px 10px;  position: relative; color: #fff; min-width: 1%; max-width: 200px; overflow: hidden; text-overflow: ellipsis;
+    display: inline-flex; font-size:12px; background: #0277BD; border-radius: 20px;}
+
+.attachment-tags ul li a{ position: relative; color: #fff; font-size: 12px; font-weight: normal; width: auto; height: auto; min-width: auto; min-height: auto; cursor: pointer;
+margin-top: 0; margin-left: 5px;}
+
+/* .btn-add-attachment{ background-color: transparent; border:0; display: block; margin: 0 0 5px 0; padding: 0; overflow: hidden; position: relative; color:#0277BD !important; font-size: 14px}
+
+.btn-add-attachment i{ margin-right: 5px}
+
+.btn-add-attachment input[type="file"] { opacity: 0; position: absolute; z-index: 1; width: 100%; left: 0; height: 100%; top: 0; cursor: pointer;} */

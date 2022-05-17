@@ -1,0 +1,229 @@
+<!-- <a id="skip-link" pageScroll  class="skip-main" [pageScrollDuration]="200" href="#main-cont" >Skip to content</a> -->
+<a class="skip-main"  [href]="skipLinkPath" >Skip to content</a>
+<div class="wrapper" id="wrapper">
+  <!--header start-->
+  <header>
+    <div class="top-w">
+      <div class="logo"> <a href="/"><img src="/assets/images/logo.svg" width="120"
+            alt="One Business Consulting Logo"></a>
+        <button (click)="onToggleSidebar()" class="togglebtn sidebarToggle" id="toggleButton" role="button"
+          aria-expanded="false"><img src="/assets/images/toggle-button.png" alt="">
+          <span class="sr-only">Sidebar</span></button>
+      </div>
+
+      <!--Sidebar start-->
+      <div id="sidebar" class="sidebar">
+        <div class="sb-main">
+          <div class="sb-content">
+            <button class="close" (click)="onCloseSidebar()" id="sidebarClosebtn"><span
+                aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+
+            <!--Upcoming start-->
+            <div class="panel-w">
+              <div class="panel-h">
+                <h2>Upcoming Events</h2>
+              </div>
+              <div class="panel-c">
+                <div class="panel-listing">
+                  <ul>
+                    <li><span class="taken-bg"><i class="fa fa-user-plus" aria-hidden="true"></i></span>Jaidutt Tyagi
+                      joined ONE BCG on 30 Jan 2020</li>
+                    <li><span class="pending-bg"><i class="fa fa-star" aria-hidden="true"></i></span>Karan Saigal
+                      completes 1 year(s) on 04 Feb 2020</li>
+                    <li><span class="rejected-bg"><i class="fa fa-birthday-cake" aria-hidden="true"></i></span>Yogesh
+                      Kumar's birthday on Mon 03 Feb 2020</li>
+                    <li><span class="taken-bg"><i class="fa fa-user-plus" aria-hidden="true"></i></span>Jaidutt Tyagi
+                      joined ONE BCG on 30 Jan 2020</li>
+                  </ul>
+                </div>
+                <a href="JavaScript:void(0)" (click)="onSeeAllEvent()"><i class="fa fa-angle-double-right"
+                    aria-hidden="true"></i> See All Event</a>
+              </div>
+            </div>
+            <!--Upcoming end-->
+
+            <!--Past Events start-->
+            <div class="panel-w">
+              <div class="panel-h">
+                <h2>Past Events</h2>
+              </div>
+              <div class="panel-c">
+                <div class="panel-listing">
+                  <ul>
+                    <li><span class="taken-bg"><i class="fa fa-user-plus" aria-hidden="true"></i></span>Jaidutt Tyagi
+                      joined ONE BCG on 30 Jan 2020</li>
+                    <li><span class="pending-bg"><i class="fa fa-star" aria-hidden="true"></i></span>Karan Saigal
+                      completes 1 year(s) on 04 Feb 2020</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <!--Past Events end-->
+
+          </div>
+        </div>
+      </div>
+      <!--Sidebar end-->
+
+      <div class="user-dropdown">
+        <div class="dropdown"> <a class="btn  dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <img alt="" height="30" width="30"
+              class="img-circle" src="/assets/images/avatar.png"> {{currentUser.userName}} </a>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink"> <a class="dropdown-item"
+              href="JavaScript:void(0);" (click)="onLogout()">Logout</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--Navbar start-->
+    <nav class="navbar navbar-expand-md">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span
+          class="navbar-toggler-icon"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span
+            class="icon-bar"></span> </span> Navigation</button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto" *ngxPermissionsOnly="['HR','Admin']">
+          <li class="nav-item" [routerLinkActive]="['active']">
+            <a class="nav-link" routerLink="/dashboard">Dashboard</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="" data-toggle="dropdown">
+              Leaves
+            </a>
+            <ul class="dropdown-menu">
+              <li [routerLinkActive]="['active']">
+                <a class="nav-link" routerLink="/leaves">Leaves</a>
+              </li>
+              <li [routerLinkActive]="['active']">
+                <a class="nav-link" routerLink="/leaves/leaves-ledger">Leave Ledger</a>
+              </li>
+              <li [routerLinkActive]="['active']">
+                <a class="nav-link" routerLink="/leaves/confirmation">Confirmation</a>
+              </li>
+              <li [routerLinkActive]="['active']">
+                <a class="nav-link" routerLink="/leaves/logs">Logs</a>
+              </li>
+              <li [routerLinkActive]="['active']">
+                <a class="nav-link" routerLink="/leaves/reports">Reports</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item" [routerLinkActive]="['active']">
+            <a class="nav-link" routerLink="/employees" routerLinkActive="active">Employees</a>
+          </li>
+          <li class="nav-item" [routerLinkActive]="['active']">
+            <a class="nav-link"
+              href="https://docs.google.com/forms/d/e/1FAIpQLScRyblOYHfgjNP-pLsJCMcxvATSLCXpGUh60dBXYINf6ovggQ/viewform"
+              target="_blank">Regularize Attendence
+            </a>
+          </li>
+          <li class="nav-item" [routerLinkActive]="['active']">
+            <a class="nav-link" routerLink="/bio-metric">Bio-Metric</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="" data-toggle="dropdown">
+              Settings
+            </a>
+            <ul class="dropdown-menu">
+              <li [routerLinkActive]="['active']">
+                <a class="nav-link" routerLink="/settings/monthly-leave-factor">Monthly Leave Factor</a>
+              </li>
+              <li [routerLinkActive]="['active']">
+                <a class="nav-link" routerLink="/settings/loyalty-leave-factor">Loyalty Leave Factor</a>
+              </li>
+              <li [routerLinkActive]="['active']">
+                <a class="nav-link" routerLink="/settings/joining-leave-factor">Joining Leave Factor</a>
+              </li>
+              <li [routerLinkActive]="['active']">
+                <a class="nav-link" routerLink="/settings/planned-leave-settings">Planned Leave Settings</a>
+              </li>
+              <li [routerLinkActive]="['active']">
+                <a class="nav-link" routerLink="/settings/unplanned-leave-settings">Unplanned Leave Settings</a>
+              </li>
+              <li [routerLinkActive]="['active']">
+                <a class="nav-link" routerLink="/settings/public-holidays-settings">Public Holiday Settings</a>
+              </li>
+              <li [routerLinkActive]="['active']">
+                <a class="nav-link" routerLink="/settings/leave-balance-adjustment">Leave Balance Adjustment</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+
+        <ul class="navbar-nav mr-auto" *ngxPermissionsOnly="['ReportingManager','ProjectManager']">
+          <li class="nav-item" [routerLinkActive]="['active']">
+            <a class="nav-link" routerLink="/dashboard">Dashboard</a>
+          </li>
+          <li class="nav-item dropdown" [routerLinkActive]="['active']">
+            <a class="nav-link dropdown-toggle" href="" data-toggle="dropdown">
+              Leaves
+            </a>
+            <ul class="dropdown-menu">
+              <li [routerLinkActive]="['active']">
+                <a class="nav-link" routerLink="/leaves">Leaves</a>
+              </li>
+              <li [routerLinkActive]="['active']">
+                <a class="nav-link" routerLink="/leaves/leaves-ledger">Leave Ledger</a>
+              </li>
+              <li [routerLinkActive]="['active']">
+                <a class="nav-link" routerLink="/leaves/logs">Logs</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item" [routerLinkActive]="['active']">
+            <a class="nav-link" routerLink="/employees" routerLinkActive="active">Employees</a>
+          </li>
+          <li class="nav-item" [routerLinkActive]="['active']">
+            <a class="nav-link"
+              href="https://docs.google.com/forms/d/e/1FAIpQLScRyblOYHfgjNP-pLsJCMcxvATSLCXpGUh60dBXYINf6ovggQ/viewform"
+              target="_blank">Regularize Attendence
+            </a>
+          </li>
+        </ul>
+
+        <ul class="navbar-nav mr-auto" *ngxPermissionsOnly="['Employee']">
+          <li class="nav-item" [routerLinkActive]="['active']">
+            <a class="nav-link" routerLink="/dashboard">Dashboard</a>
+          </li>
+          <li class="nav-item dropdown" [routerLinkActive]="['active']">
+            <a class="nav-link dropdown-toggle" href="" data-toggle="dropdown">
+              Leaves
+            </a>
+            <ul class="dropdown-menu">
+              <li [routerLinkActive]="['active']">
+                <a class="nav-link" routerLink="/leaves">Leaves</a>
+              </li>
+              <li [routerLinkActive]="['active']">
+                <a class="nav-link" routerLink="/leaves/leaves-ledger">Leave Ledger</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item" [routerLinkActive]="['active']">
+            <a class="nav-link" routerLink="/employees" routerLinkActive="active">Employees</a>
+          </li>
+          <li class="nav-item" [routerLinkActive]="['active']">
+            <a class="nav-link"
+              href="https://docs.google.com/forms/d/e/1FAIpQLScRyblOYHfgjNP-pLsJCMcxvATSLCXpGUh60dBXYINf6ovggQ/viewform"
+              target="_blank">Regularize Attendence
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <!--Navbar end-->
+  </header>
+  <!-- header end -->
+
+  <!--Content start-->
+  <main id="main-cont">
+    <section class="">
+      <router-outlet></router-outlet>
+    </section>
+  </main>
+  <!--Content end-->
+  <div class="push"></div>
+</div>
+<!--Footer start-->
+<footer>
+  <p>Copyright © 2020 ONE BCG. All rights reserved.</p>
+</footer>

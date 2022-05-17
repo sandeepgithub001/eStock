@@ -5,17 +5,17 @@ VisualStudioVersion = 16.0.31729.503
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{DD7E7F70-3A00-4643-8ACA-A992112BB182}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EStock.Api", "EStock.Api\EStock.Api.csproj", "{AAB7E14B-EEE3-4341-AC79-B05EB948F13F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EStock.Api", "EStock.Api\EStock.Api.csproj", "{AAB7E14B-EEE3-4341-AC79-B05EB948F13F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EStock.Models", "EStock.Models\EStock.Models.csproj", "{157E8AA6-3A64-4D97-8A04-D22C95C3051D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EStock.Models", "EStock.Models\EStock.Models.csproj", "{157E8AA6-3A64-4D97-8A04-D22C95C3051D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EStock.Services", "EStock.Services\EStock.Services.csproj", "{F8E9C3AB-45E4-46D9-AA69-D6DD4F293F51}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EStock.Services", "EStock.Services\EStock.Services.csproj", "{F8E9C3AB-45E4-46D9-AA69-D6DD4F293F51}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EStock.DataAccess", "EStock.DataAccess\EStock.DataAccess.csproj", "{1CAE3349-414C-4857-9D69-464FDBAFF3FA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EStock.DataAccess", "EStock.DataAccess\EStock.DataAccess.csproj", "{1CAE3349-414C-4857-9D69-464FDBAFF3FA}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "getway", "getway", "{42C200F9-07BB-4B7E-865A-7A52FE5CB6D1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EStock.Getway", "EStock.Getway\EStock.Getway.csproj", "{06373657-4864-41BB-8813-BA580BC7CC5A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EStock.Getway", "EStock.Getway\EStock.Getway.csproj", "{06373657-4864-41BB-8813-BA580BC7CC5A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

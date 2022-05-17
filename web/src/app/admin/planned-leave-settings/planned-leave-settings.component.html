@@ -1,0 +1,51 @@
+<div class="content-spacing">
+    <div class="container-fluid">
+    <h1 class="fontsize-20">Planned Leave Settings</h1>
+    <!--Standard table start-->
+    <div class="standard-table mtp30">
+        <div class="table-responsive">
+            <table id="sticky-header" class="table table-bordered sticky-header" summary="Employee Monthly Leave Factor">
+                <thead class="thead-dark">
+                    <tr>
+                        <th width="20%" scope="col" id="year">Leave Duration</th>
+                        <th width="70%" scope="col" id="year">Required Time / Working Days</th>
+                        <th width="10%" scope="col" id="action">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of leaveFactors; let i = index; let first = first; let last = last">
+                        <td width="20%" headers="year">
+                            <input type="hidden" [(ngModel)]="item.LeaveFactorTypeId" id="LeaveFactorTypeId" value="{{item.LeaveFactorTypeId}}">
+                            <input type="hidden" [(ngModel)]="item.Id" id="Id" value="{{item.Id}}">
+                            <input type="hidden" [(ngModel)]="item.RangeFrom" id="RangeFrom" value="{{item.RangeFrom}}">
+                            <input type="hidden" [(ngModel)]="item.isEditable" id="isEditable" value="{{item.isEditable}}">
+                            <p *ngIf="!last">{{item.RangeFrom}}</p>
+                            <p *ngIf="last">{{item.RangeFrom}} & above</p>
+                        </td>
+                        <td width="70%" headers="leaveFactor">
+                            <p *ngIf="!item.isEditable">{{item.FactorValue}}</p>
+                            <input *ngIf="item.isEditable" maxlength="2" appDigitNumberOnly [(ngModel)]="item.FactorValue"
+                                class="form-control input-number w-25" type="number" id="inputleaveFactor" 
+                                (input)="onFactorValueChange(i,$event.target.value)"
+                                (keyup.enter)="onKeyEnter(i,$event.target.value)"
+                                value="{{item.FactorValue}}">
+                        </td>
+                        <td width="10%" headers="action">
+                            <button *ngIf="!item.isEditable" class="btn btn-primary btn-small"
+                                (click)="onEditRow($event,i)">
+                                <i class="fa fa-pencil-square" aria-hidden="true"></i> Edit
+                            </button>
+                            <button *ngIf="item.isEditable" [disabled]="item.isDisabled" class="btn btn-success btn-small"
+                                (click)="onEditRow($event,i)">
+                                <i class="fa fa-refresh" aria-hidden="true"></i> Update
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!--Standard table end-->
+
+</div>
+</div>

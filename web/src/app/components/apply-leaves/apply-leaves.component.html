@@ -1,0 +1,267 @@
+<!--Apply Leaves start-->
+<div class="tab-pane fade show active" id="applyLeaves" role="tabpanel">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="leave-listing">
+                    <ul>
+                        <li>Leave Balance: 1</li>
+                        <li>Balance: 0</li>
+                        <li>Immediate: 2</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="employee-w">
+                    <form [formGroup]="leaveModel" (ngSubmit)="onSubmit(leaveConfirmationTemplate)">
+                        <div class="form-group"
+                            *ngxPermissionsOnly="['HR','Admin','ProjectManager','ReportingManager']">
+                            <label for="employeeId">Select Employee<span class="asterik">*</span></label>
+                            <select class="custom-select" formControlName="employeeId"
+                                (change)="onChangeEmployeeId($event.target.value)"
+                                [ngClass]="{ 'is-invalid': (submitted || f.employeeId.dirty || f.employeeId.touched) && f.employeeId.errors }"
+                                id="employeeId">
+                                <option value="">Select Employee</option>
+                                <option *ngFor="let item of employees" value={{item.ID}}>
+                                    {{item.Name}}
+                                </option>
+                            </select>
+                            <div *ngIf="(submitted || f.employeeId.dirty || f.employeeId.touched) && f.employeeId.errors"
+                                class="invalid-feedback text-danger pull-right">
+                                <div *ngIf="f.employeeId.errors.required">This field is required</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="leaveTypeId">Select Leave Type<span class="asterik">*</span></label>
+                            <select class="custom-select" formControlName="leaveTypeId"
+                                (change)="onChangeLeaveType($event.target.value)"
+                                [ngClass]="{ 'is-invalid': (submitted || f.leaveTypeId.dirty || f.leaveTypeId.touched) && f.leaveTypeId.errors }"
+                                id="leaveTypeId">
+                                <option value="">Select Leave Type</option>
+                                <option *ngFor="let item of leaveTypes" value={{item.ID}}>
+                                    {{item.Name}}
+                                </option>
+                            </select>
+                            <div *ngIf="f.leaveTypeId.value == 300003 && f.dayType.value == 0.5" class="text-danger">
+                                <div>0.5 leave will be Birthday paid leave.</div>
+                            </div>
+                            <div *ngIf="f.leaveTypeId.value == 300003 && f.dayType.value == 1" class="text-danger">
+                                <div>0.5 leave will be Birthday paid leave, another 0.5 will be deducted from your
+                                    balance.</div>
+                            </div>
+                            <div *ngIf="(submitted || f.leaveTypeId.dirty || f.leaveTypeId.touched) && f.leaveTypeId.errors"
+                                class="invalid-feedback text-danger pull-right">
+                                <div *ngIf="f.leaveTypeId.errors.required">This field is required</div>
+                            </div>
+                        </div>
+                        <div class="form-group" *ngIf="f.leaveTypeId.value == 300003">
+                            <label for="dayType">Select Duration</label>
+                            <select class="custom-select" (change)="onDayTypeChange($event.target.value)"
+                                formControlName="dayType" id="dayType">
+                                <option value="0.5">Half Day</option>
+                                <option value="1">Full Day</option>
+                            </select>
+                        </div>
+                        <div class="form-group" *ngIf="f.leaveTypeId.value == 300005">
+                            <label for="expectedDeliveryDate">Expected Delivery Date<span
+                                    class="asterik">*</span></label>
+                            <div class="input-group">
+                                <input type="text" class="form-control input-cal" formControlName="expectedDeliveryDate"
+                                    appDateOnly readonly
+                                    [ngClass]="{ 'is-invalid': (submitted || f.expectedDeliveryDate.dirty || f.expectedDeliveryDate.touched) && f.expectedDeliveryDate.errors }"
+                                    id="expectedDeliveryDate" #datepickerFull="bsDatepicker" bsDatepicker
+                                    (bsValueChange)="onChangeExpectedDeliveryDate($event)" [bsConfig]="bsConfig">
+                                <div class="input-group-prepend icon-holder">
+                                    <span class="input-group-text"><i class="fa fa-calendar"
+                                            aria-hidden="true"></i></span>
+                                </div>
+                            </div>
+                            <div *ngIf="(submitted || f.expectedDeliveryDate.dirty || f.expectedDeliveryDate.touched) && f.expectedDeliveryDate.errors"
+                                [ngClass]="{ 'display-block': (submitted || f.expectedDeliveryDate.dirty || f.expectedDeliveryDate.touched) && f.expectedDeliveryDate.errors }"
+                                class="invalid-feedback text-danger pull-right">
+                                <div *ngIf="f.expectedDeliveryDate.errors.required">This field is required</div>
+                                <div *ngIf="!f.expectedDeliveryDate.errors.required && f.expectedDeliveryDate.invalid">
+                                    This field is
+                                    required</div>
+                            </div>
+                        </div>
+                        <div class="clr"></div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="fromDate">From<span class="asterik">*</span></label>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control input-cal" formControlName="fromDate" readonly appDateOnly
+                                            [ngClass]="{ 'is-invalid': (submitted || f.fromDate.dirty || f.fromDate.touched) && f.fromDate.errors }"
+                                            id="fromDate" #datepickerFull="bsDatepicker" bsDatepicker
+                                            (bsValueChange)="onChangeFromDate($event)" [bsConfig]="bsConfig"
+                                            [minDate]="minDate">
+                                        <div class="input-group-prepend icon-holder">
+                                            <span class="input-group-text"><i class="fa fa-calendar"
+                                                    aria-hidden="true"></i></span>
+                                        </div>
+                                    </div>
+                                    <div *ngIf="(submitted || f.fromDate.dirty || f.fromDate.touched) && f.fromDate.errors"
+                                        [ngClass]="{ 'display-block': (submitted || f.fromDate.dirty || f.fromDate.touched) && f.fromDate.errors }"
+                                        class="invalid-feedback text-danger pull-right">
+                                        <div *ngIf="f.fromDate.errors.required">This field is required</div>
+                                        <div *ngIf="!f.fromDate.errors.required && f.fromDate.invalid">This field is
+                                            required</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="toDate">To<span class="asterik">*</span></label>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control input-cal" formControlName="toDate" readonly appDateOnly
+                                            [ngClass]="{ 'is-invalid': (submitted || f.toDate.dirty || f.toDate.touched) && f.toDate.errors }"
+                                            id="toDate" #datepickerFull="bsDatepicker" bsDatepicker
+                                            (bsValueChange)="onChangeToDate($event)" [bsConfig]="bsConfig"
+                                            [minDate]="minToDate">
+                                        <div class="input-group-prepend icon-holder">
+                                            <span class="input-group-text"><i class="fa fa-calendar"
+                                                    aria-hidden="true"></i></span>
+                                        </div>
+                                    </div>
+                                    <div *ngIf="(submitted || f.toDate.dirty || f.toDate.touched) && f.toDate.errors"
+                                        [ngClass]="{ 'display-block': (submitted || f.toDate.dirty || f.toDate.touched) && f.toDate.errors }"
+                                        class="invalid-feedback text-danger pull-right">
+                                        <div *ngIf="f.toDate.errors.required">This field is required</div>
+                                        <div *ngIf="!f.toDate.errors.required && f.toDate.invalid">This field is
+                                            required</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="duration">Leave Duration</label>
+                                    <input type="text" formControlName="duration" disabled class="form-control"  id="duration">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clr"></div>
+
+                        <div class="row" *ngIf="(f.leaveTypeId.value == 300001 || f.leaveTypeId.value == 300003) && f.dayType.value == 0.5">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="fromTime">From Time<span class="asterik">*</span></label>
+                                    <div class="input-group">
+                                        <input type="text" [owlDateTimeTrigger]="dt4" [min]="minFromTime"
+                                            [owlDateTime]="dt4" class="form-control input-time" readonly
+                                            (dateTimeChange)="OnChangeFromTime($event)" formControlName="fromTime"
+                                            [ngClass]="{ 'is-invalid': (submitted || f.fromTime.dirty || f.fromTime.touched) && f.fromTime.errors }"
+                                            id="fromTime">
+                                        <div class="input-group-prepend icon-holder">
+                                            <span class="input-group-text"><i class="fa fa-clock-o"
+                                                    aria-hidden="true"></i></span>
+                                        </div>
+                                        <owl-date-time hour12Timer="true" [pickerType]="'timer'" #dt4></owl-date-time>
+                                    </div>
+                                    <div *ngIf="(submitted || f.fromTime.dirty || f.fromTime.touched) && f.fromTime.errors"
+                                        [ngClass]="{ 'display-block': (submitted || f.fromTime.dirty || f.fromTime.touched) && f.fromTime.errors }"
+                                        class="invalid-feedback text-danger pull-right">
+                                        <div *ngIf="f.fromTime.errors.required">This field is required</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="toTime">To Time<span class="asterik">*</span></label>
+                                    <div class="input-group">
+                                        <input type="text" [owlDateTimeTrigger]="dt5" [min]="minToTime" readonly
+                                            [owlDateTime]="dt5" class="form-control input-time" formControlName="toTime"
+                                            [ngClass]="{ 'is-invalid': (submitted || f.toTime.dirty || f.toTime.touched) && f.toTime.errors }"
+                                            id="toTime">
+                                        <div class="input-group-prepend icon-holder">
+                                            <span class="input-group-text"><i class="fa fa-clock-o"
+                                                    aria-hidden="true"></i></span>
+                                        </div>
+                                        <owl-date-time hour12Timer="true" [pickerType]="'timer'" #dt5></owl-date-time>
+                                    </div>
+                                    <div *ngIf="(submitted || f.toTime.dirty || f.toTime.touched) && f.toTime.errors"
+                                        [ngClass]="{ 'display-block': (submitted || f.toTime.dirty || f.toTime.touched) && f.toTime.errors }"
+                                        class="invalid-feedback text-danger pull-right">
+                                        <div *ngIf="f.toTime.errors.required">This field is required</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clr"></div>
+
+                        <div class="form-group">
+                            <label for="description">Description<span class="asterik">*</span></label>
+                            <textarea class="form-control" maxlength="100" formControlName="description"
+                                appNotAllowOnlySpace
+                                [ngClass]="{ 'is-invalid': (submitted || f.description.dirty || f.description.touched) && f.description.errors }"
+                                id="description" rows="3"></textarea>
+                            <div *ngIf="(submitted || f.description.dirty || f.description.touched) && f.description.errors && f.leaveTypeId.value != 300007"
+                                class="invalid-feedback text-danger pull-right">
+                                <div *ngIf="f.description.errors.required">This field is required</div>
+                                <div *ngIf="f.description.errors.invalid">Limit exceeded</div>
+                            </div>
+                            <div *ngIf="f.leaveTypeId.value == 300007" class="text-danger">
+                                <div>Please mention the relation, otherwise your leave will get rejected.</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="pull-right">
+                                <label for="addAttachment" class="sr-only">Add Attachment</label>
+                                <a href="JavaScript:void(0);" class="btn-add-attachment"><i class="fa fa-paperclip"
+                                        aria-hidden="true"></i> Add
+                                    Attachment <input type="file" accept="image/*" id="addAttachment"
+                                        (change)="onAddAttachment($event)"></a>
+                            </div>
+
+
+                            
+                            <div class="attachment-region">
+                                <div class="attachment-tags">
+                                    <ul>
+                                        <li *ngFor="let item of attachments; let i = index">
+                                        <a href="{{item.fileUrl}}" target="_blank"> <span class="tags-text">{{item.OriginalFileName}}</span></a>
+                                            <a href="JavaScript:void(0);" (click)="onDeleteAttachment(i,item.FileName)">
+                                                <span aria-hidden="true">&times;</span><span
+                                                    class="sr-only">Close</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="text-right button-region">
+                            <button type="button" (click)="onCancel()" class="btn btn-secondary">Cancel</button>
+                            <button type="submit" class="btn btn-primary mlt15">Submit</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<ng-template #leaveConfirmationTemplate>
+    <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title pull-left">Alert</h4>
+            <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body text-center">
+            <p> {{confirmationObj.message}}</p>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" (click)="modalRef.hide()">No</button>
+            <button type="button" ngbAutofocus class="btn btn-primary"
+                (click)="leaveConfirmationTemplateAccept(leaveApplyNestedTemplate)">Yes</button>
+        </div>
+    </div>
+</ng-template>
