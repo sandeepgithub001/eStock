@@ -1,21 +1,16 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { LayoutComponent } from './Shared/_layout/layout.component';
+import { RouterModule, Routes } from '@angular/router';
+import { CompanyComponent } from './company/company.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: LayoutComponent,
-    children: [
-    ]
-  },
-  // otherwise redirect to home
-  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
-  { path: '**', redirectTo: 'dashboard' },
+  { path: 'company', component: CompanyComponent },
+  { path: 'stock', component: CompanyComponent },
+  { path: '', redirectTo: '/company', pathMatch: 'full' }, // redirect to company
+  { path: '**', component: CompanyComponent },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { useHash: false })],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

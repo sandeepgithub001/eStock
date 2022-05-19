@@ -1,3 +1,32 @@
-<router-outlet></router-outlet>
+<header>
+  <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <div class="container">
+      <a class="navbar-brand" href="#">E-Stock</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a routerLink="/company" class="nav-link" routerLinkActive="active">Company</a>
+          </li>
+          <li class="nav-item">
+            <a routerLink="/stock" class="nav-link">Stock</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
 
-<ng4-loading-spinner> </ng4-loading-spinner>
+<body>
+
+  <div style="margin-top:30px">
+    <router-outlet></router-outlet>
+  </div>
+</body>
+<footer style="margin-bottom: 0px;">
+  <div class="jumbotron text-center">
+    <p>Footer</p>
+  </div>
+</footer>
