@@ -1,10 +1,7 @@
-﻿using EStock.Services.Abstractions;
-using EStock.Services.Services;
-using Microsoft.AspNetCore.Http;
+﻿using EStock.Models;
+using EStock.Services.Abstractions;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace EStock.Api.Controllers
@@ -19,36 +16,36 @@ namespace EStock.Api.Controllers
             _companyRepository = companyRepository;
         }
 
-        // GET: api/<StockController>
+        // GET: api/<CompanyController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public async Task<IActionResult> Get()
         {
-            return new string[] { "value1", "value2" };
+            var result = await _companyRepository.GetAllCompany();
+            return Ok(result);
         }
 
-        // GET api/<StockController>/5
+        // GET api/<CompanyController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public async Task<IActionResult> Get(string id)
         {
-            return "value";
+            var result = await _companyRepository.GetCompanyById(Guid.Parse(id));
+            return Ok(result);
         }
 
-        // POST api/<StockController>
+        // POST api/<CompanyController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public async Task<IActionResult> Post([FromBody] Company value)
         {
+            var result = await _companyRepository.InsertCompany(value);
+            return Ok(result);
         }
 
-        // PUT api/<StockController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<StockController>/5
+        // DELETE api/<CompanyController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task<IActionResult> Delete(string id)
         {
+            var result = await _companyRepository.DeleteCompany(Guid.Parse(id));
+            return Ok(result);
         }
     }
 }

@@ -1,33 +1,37 @@
-﻿using EStock.Models;
+﻿using EStock.DataAccess;
+using EStock.Models;
 using EStock.Services.Abstractions;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace EStock.Services.Services
 {
     public class CompanyRepository : ICompanyRepository
     {
+        private readonly CompanyDataAccess _companyDataAccess;
+        public CompanyRepository(CompanyDataAccess companyDataAccess)
+        {
+            _companyDataAccess = companyDataAccess;
+        }
         public Task<int> DeleteCompany(Guid id)
         {
-            throw new NotImplementedException();
+            return _companyDataAccess.DeleteCompanyRecord(id);
         }
 
-        public Task<IEnumerable<Company>> GetAllCompany()
+        public Task<List<Company>> GetAllCompany()
         {
-            throw new NotImplementedException();
+            return _companyDataAccess.GetCompanyRecords();
         }
 
         public Task<Company> GetCompanyById(Guid id)
         {
-            throw new NotImplementedException();
+            return _companyDataAccess.GetCompanySingleRecord(id);
         }
 
         public Task<int> InsertCompany(Company company)
         {
-            throw new NotImplementedException();
+            return _companyDataAccess.AddCompanyRecord(company);
         }
     }
 }

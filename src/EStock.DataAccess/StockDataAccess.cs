@@ -1,8 +1,8 @@
 ﻿using EStock.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace EStock.DataAccess
@@ -16,10 +16,10 @@ namespace EStock.DataAccess
             _context = context;
         }
 
-        public void AddStockRecord(Stock stock)
+        public async Task<int> AddStockRecord(Stock stock)
         {
-            _context.Stocks.Add(stock);
-            _context.SaveChanges();
+            await _context.Stocks.AddAsync(stock);
+            return _context.SaveChanges();
         }
 
         public void UpdateStockRecord(Stock stock)
@@ -28,21 +28,21 @@ namespace EStock.DataAccess
             _context.SaveChanges();
         }
 
-        public void DeleteStocksRecord(int id)
+        public void DeleteStocksRecord(Guid id)
         {
             var entity = _context.Stocks.FirstOrDefault(t => t.Id == id);
             _context.Stocks.Remove(entity);
             _context.SaveChanges();
         }
 
-        public Stock GetStockSingleRecord(int id)
+        public Task<Stock> GetStockSingleRecord(Guid id)
         {
-            return _context.Stocks.FirstOrDefault(t => t.Id == id);
+            return _context.Stocks.FirstOrDefaultAsync(t => t.Id == id);
         }
 
-        public List<Stock> GetStocksRecords()
+        public Task<List<Stock>> GetStocksRecords()
         {
-            return _context.Stocks.ToList();
+            return _context.Stocks.ToListAsync();
         }
     }
 }
