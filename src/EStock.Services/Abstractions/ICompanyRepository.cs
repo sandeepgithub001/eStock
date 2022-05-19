@@ -9,7 +9,7 @@ namespace EStock.Services.Abstractions
     {
         Task<int> InsertCompany(Company company);
         Task<int> DeleteCompany(Guid id);
-        Task<IEnumerable<Company>> GetAllCompany();
+        Task<List<Company>> GetAllCompany();
         Task<Company> GetCompanyById(Guid id);
 
     }

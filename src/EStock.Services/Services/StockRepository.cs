@@ -1,28 +1,35 @@
-﻿using EStock.Models;
+﻿using EStock.DataAccess;
+using EStock.Models;
 using EStock.Services.Abstractions;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace EStock.Services.Services
 {
     public class StockRepository : IStockRepository
     {
+        private readonly StockDataAccess _stockDataAccess;
+
+        public StockRepository(StockDataAccess stockDataAccess)
+        {
+            _stockDataAccess = stockDataAccess;
+        }
         public Task<int> AddStock(Stock stock)
         {
-            throw new NotImplementedException();
+            return _stockDataAccess.AddStockRecord(stock);
         }
 
-        public Task<IEnumerable<Stock>> GetAllStock()
+        public Task<List<Stock>> GetAllStock()
         {
-            throw new NotImplementedException();
+            return _stockDataAccess.GetStocksRecords();
         }
 
         public Task<Stock> GetStockById(Guid id)
         {
-            throw new NotImplementedException();
+            return _stockDataAccess.GetStockSingleRecord(id);
         }
+
+
     }
 }

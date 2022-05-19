@@ -1,8 +1,7 @@
 ﻿using EStock.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace EStock.DataAccess
@@ -16,10 +15,10 @@ namespace EStock.DataAccess
             _context = context;
         }
 
-        public void AddCompanyRecord(Company company)
+        public async Task<int> AddCompanyRecord(Company company)
         {
-            _context.Companies.Add(company);
-            _context.SaveChanges();
+            await _context.Companies.AddAsync(company);
+            return _context.SaveChanges();
         }
 
         public void UpdateCompanyRecord(Company company)
@@ -28,21 +27,21 @@ namespace EStock.DataAccess
             _context.SaveChanges();
         }
 
-        public void DeleteCompanyRecord(int id)
+        public async Task<int> DeleteCompanyRecord(Guid id)
         {
-            var entity = _context.Companies.FirstOrDefault(t => t.Id == id);
+            var entity = await _context.Companies.FirstOrDefaultAsync(t => t.Id == id);
             _context.Companies.Remove(entity);
-            _context.SaveChanges();
+            return _context.SaveChanges();
         }
 
-        public Company GetCompanySingleRecord(int id)
+        public Task<Company> GetCompanySingleRecord(Guid id)
         {
-            return _context.Companies.FirstOrDefault(t => t.Id == id);
+            return _context.Companies.FirstOrDefaultAsync(t => t.Id == id);
         }
 
-        public List<Company> GetCompanyRecords()
+        public Task<List<Company>> GetCompanyRecords()
         {
-            return _context.Companies.ToList();
+            return _context.Companies.ToListAsync();
         }
     }
 }
