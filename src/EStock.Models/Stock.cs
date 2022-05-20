@@ -1,14 +1,16 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EStock.Models
 {
+    [Table("stocks")]
     public class Stock
     {
-        public int Id { get; set; }
-        public int CompanyId { get; set; }
-        public decimal StockPrice { get; set; }
-        public DateTime StartDate { get; set; }
-        public DateTime EndDate { get; set; }
+        public int id { get; set; }
+        public int companyid { get; set; }
+        public decimal stockprice { get; set; }
+        public DateTime startdate { get; set; }
+        public DateTime enddate { get; set; }
 
     }
 }

@@ -30,14 +30,14 @@ namespace EStock.DataAccess
 
         public void DeleteStocksRecord(int id)
         {
-            var entity = _context.Stocks.FirstOrDefault(t => t.Id == id);
+            var entity = _context.Stocks.FirstOrDefault(t => t.id == id);
             _context.Stocks.Remove(entity);
             _context.SaveChanges();
         }
 
         public Task<Stock> GetStockSingleRecord(int id)
         {
-            return _context.Stocks.FirstOrDefaultAsync(t => t.Id == id);
+            return _context.Stocks.FirstOrDefaultAsync(t => t.id == id);
         }
 
         public Task<List<Stock>> GetStocksRecords()
