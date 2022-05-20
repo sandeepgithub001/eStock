@@ -14,7 +14,7 @@ namespace EStock.Services.Services
         {
             _companyDataAccess = companyDataAccess;
         }
-        public Task<int> DeleteCompany(Guid id)
+        public Task<int> DeleteCompany(int id)
         {
             return _companyDataAccess.DeleteCompanyRecord(id);
         }
@@ -24,7 +24,7 @@ namespace EStock.Services.Services
             return _companyDataAccess.GetCompanyRecords();
         }
 
-        public Task<Company> GetCompanyById(Guid id)
+        public Task<Company> GetCompanyById(int id)
         {
             return _companyDataAccess.GetCompanySingleRecord(id);
         }

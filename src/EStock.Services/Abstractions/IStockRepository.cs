@@ -9,6 +9,6 @@ namespace EStock.Services.Abstractions
     {
         Task<int> AddStock(Stock stock);
         Task<List<Stock>> GetAllStock();
-        Task<Stock> GetStockById(Guid id);
+        Task<Stock> GetStockById(int id);
     }
 }

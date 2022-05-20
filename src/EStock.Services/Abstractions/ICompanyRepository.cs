@@ -8,9 +8,9 @@ namespace EStock.Services.Abstractions
     public interface ICompanyRepository
     {
         Task<int> InsertCompany(Company company);
-        Task<int> DeleteCompany(Guid id);
+        Task<int> DeleteCompany(int id);
         Task<List<Company>> GetAllCompany();
-        Task<Company> GetCompanyById(Guid id);
+        Task<Company> GetCompanyById(int id);
 
     }
 }

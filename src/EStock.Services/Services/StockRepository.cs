@@ -25,7 +25,7 @@ namespace EStock.Services.Services
             return _stockDataAccess.GetStocksRecords();
         }
 
-        public Task<Stock> GetStockById(Guid id)
+        public Task<Stock> GetStockById(int id)
         {
             return _stockDataAccess.GetStockSingleRecord(id);
         }

@@ -28,9 +28,9 @@ namespace EStock.Api.Controllers
 
         // GET api/<StockController>/5
         [HttpGet("{id}")]
-        public async Task<IActionResult> Get(string id)
+        public async Task<IActionResult> Get(int id)
         {
-            var result = await _stockRepository.GetStockById(Guid.Parse(id));
+            var result = await _stockRepository.GetStockById(id);
             return Ok(result);
         }
 

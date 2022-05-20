@@ -34,8 +34,10 @@ namespace EStock.Api
                 options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection"))
                 );
 
-            services.AddTransient<IStockRepository, StockRepository>()
-            .AddTransient<ICompanyRepository, CompanyRepository>();
+            services.AddTransient<CompanyDataAccess>()
+                .AddTransient<StockDataAccess>()
+                .AddTransient<IStockRepository, StockRepository>(x => new StockRepository(x.GetRequiredService<StockDataAccess>()))
+                .AddTransient<ICompanyRepository, CompanyRepository>(x => new CompanyRepository(x.GetRequiredService<CompanyDataAccess>()));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

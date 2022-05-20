@@ -26,9 +26,9 @@ namespace EStock.Api.Controllers
 
         // GET api/<CompanyController>/5
         [HttpGet("{id}")]
-        public async Task<IActionResult> Get(string id)
+        public async Task<IActionResult> Get(int id)
         {
-            var result = await _companyRepository.GetCompanyById(Guid.Parse(id));
+            var result = await _companyRepository.GetCompanyById(id);
             return Ok(result);
         }
 
@@ -42,9 +42,9 @@ namespace EStock.Api.Controllers
 
         // DELETE api/<CompanyController>/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(string id)
+        public async Task<IActionResult> Delete(int id)
         {
-            var result = await _companyRepository.DeleteCompany(Guid.Parse(id));
+            var result = await _companyRepository.DeleteCompany(id);
             return Ok(result);
         }
     }

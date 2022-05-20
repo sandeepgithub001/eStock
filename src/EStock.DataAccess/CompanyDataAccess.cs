@@ -27,16 +27,16 @@ namespace EStock.DataAccess
             _context.SaveChanges();
         }
 
-        public async Task<int> DeleteCompanyRecord(Guid id)
+        public async Task<int> DeleteCompanyRecord(int id)
         {
-            var entity = await _context.Companies.FirstOrDefaultAsync(t => t.Id == id);
+            var entity = await _context.Companies.FirstOrDefaultAsync(t => t.id == id);
             _context.Companies.Remove(entity);
             return _context.SaveChanges();
         }
 
-        public Task<Company> GetCompanySingleRecord(Guid id)
+        public Task<Company> GetCompanySingleRecord(int id)
         {
-            return _context.Companies.FirstOrDefaultAsync(t => t.Id == id);
+            return _context.Companies.FirstOrDefaultAsync(t => t.id == id);
         }
 
         public Task<List<Company>> GetCompanyRecords()

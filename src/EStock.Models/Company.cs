@@ -1,16 +1,18 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EStock.Models
 {
+    [Table("companies")]
     public class Company
     {
-        public Guid Id { get; set; }
-        public string Code { get; set; }
-        public string Name { get; set; }
-        public string CEO { get; set; }
-        public string TrunOver { get; set; }
-        public string Website { get; set; }
-        public string StockExchange { get; set; }
+        public int id { get; set; }
+        public string code { get; set; }
+        public string name { get; set; }
+        public string ceo { get; set; }
+        public string trunover { get; set; }
+        public string website { get; set; }
+        public string stockexchange { get; set; }
 
     }
 }
