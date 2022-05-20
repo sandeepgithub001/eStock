@@ -1,0 +1,60 @@
+<div class="container">
+    <form [formGroup]="ObjForm" (ngSubmit)="onSubmit($event)">
+        <div class="row">
+            <div class="col-md-2">
+                <label for="email" class=" mr-sm-2">Company Code:</label>
+            </div>
+            <div class="col-md-auto">                
+                <input type="email" class="form-control mb-2 mr-sm-2" formControlName="code">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                <label for="email" class=" mr-sm-2">Company Name:</label>
+            </div>
+            <div class="col-md-auto">                
+                <input type="email" class="form-control mb-2 mr-sm-2" formControlName="name">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                <label for="email" class=" mr-sm-2">Company CEO:</label>
+            </div>
+            <div class="col-md-auto">                
+                <input type="email" class="form-control mb-2 mr-sm-2" formControlName="ceo">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                <label for="email" class=" mr-sm-2">Company TurnOver:</label>
+            </div>
+            <div class="col-md-auto">                
+                <input type="email" class="form-control mb-2 mr-sm-2" formControlName="turnOver">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                <label for="email" class=" mr-sm-2">Company Website:</label>
+            </div>
+            <div class="col-md-auto">                
+                <input type="email" class="form-control mb-2 mr-sm-2" formControlName="website">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                <label for="email" class=" mr-sm-2">Company StockExchange:</label>
+            </div>
+            <div class="col-md-auto">                
+                <input type="email" class="form-control mb-2 mr-sm-2" formControlName="stockExchange">
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-auto pull-right">
+                <button type="submit" class="btn btn-danger mb-2">Cancel</button>
+                <button type="submit" class="btn btn-primary mb-2">Submit</button>
+            </div>           
+        </div>
+       
+    </form>
+</div>

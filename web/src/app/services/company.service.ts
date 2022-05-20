@@ -15,4 +15,8 @@ export class CompanyService {
         return this.httpService.get("Company/Get");
     }
 
+    public UpdateCompany(data: any) {
+        return this.httpService.post("Company/Get", data);
+    }
+
 }
