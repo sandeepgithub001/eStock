@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-2">
+            <label class=" mr-sm-2">Company Code:</label>
+        </div>
+        <div class="col-md-auto">
+            <input  type="text" class="form-control mb-2 mr-sm-2" readonly>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+            <label class=" mr-sm-2">Company Name:</label>
+        </div>
+        <div class="col-md-auto">
+            <input type="text" class="form-control mb-2 mr-sm-2" readonly>
+        </div>
+    </div>
+</div>
+<br>
+<div class="container">
+    <h3>List of Stock</h3>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th>Stock Price</th>
+                <th>Date</th>
+                <th>Time</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of ObjCompanyStockList;">
+                <td>{{item.id}}</td>
+                <td>{{item.code}}</td>
+                <td>{{item.name}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

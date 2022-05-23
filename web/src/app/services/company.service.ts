@@ -12,11 +12,15 @@ export class CompanyService {
     }
 
     public GetCompanyList() {
-        return this.httpService.get("Company/Get");
+        return this.httpService.get("Company");
+    }
+
+    public GetCompanyDetails(id: any) {
+        return this.httpService.get("Company?id=" + id);
     }
 
     public UpdateCompany(data: any) {
-        return this.httpService.post("Company/Get", data);
+        return this.httpService.post("Company", data);
     }
 
 }

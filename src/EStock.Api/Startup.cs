@@ -50,6 +50,11 @@ namespace EStock.Api
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "EStock.Api v1"));
             }
 
+            app.UseCors(x => x
+           .AllowAnyOrigin()
+           .AllowAnyMethod()
+           .AllowAnyHeader());
+
             app.UseRouting();
 
             app.UseAuthorization();

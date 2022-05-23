@@ -5,7 +5,12 @@
                 <label for="email" class=" mr-sm-2">Company Code:</label>
             </div>
             <div class="col-md-auto">                
-                <input type="email" class="form-control mb-2 mr-sm-2" formControlName="code">
+                <input type="email" class="form-control mb-2 mr-sm-2" formControlName="code" required>
+                <div *ngIf="submitted && form['code'].errors" class="error">
+                    <div *ngIf="form['code'].errors['required']">
+                        This field is required
+                    </div>
+                </div>
             </div>
         </div>
         <div class="row">
@@ -14,6 +19,11 @@
             </div>
             <div class="col-md-auto">                
                 <input type="email" class="form-control mb-2 mr-sm-2" formControlName="name">
+                <div *ngIf="submitted && form['name'].errors" class="error">
+                    <div *ngIf="form['name'].errors['required']">
+                        This field is required
+                    </div>
+                </div>
             </div>
         </div>
         <div class="row">
@@ -51,7 +61,7 @@
         <br>
         <div class="row">
             <div class="col-md-auto pull-right">
-                <button type="submit" class="btn btn-danger mb-2">Cancel</button>
+                <button type="button" (click)="onCancel($event)" class="btn btn-danger mb-2">Cancel</button>
                 <button type="submit" class="btn btn-primary mb-2">Submit</button>
             </div>           
         </div>

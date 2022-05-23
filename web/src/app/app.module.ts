@@ -7,20 +7,23 @@ import { AppComponent } from './app.component';
 import { CompanyComponent } from './company/company.component';
 import { UpdateCompanyComponent } from './update-company/update-company.component';
 import { UpdateStockComponent } from './update-stock/update-stock.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CompanyDetailComponent } from './company-detail/company-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CompanyComponent,
     UpdateCompanyComponent,
-    UpdateStockComponent
+    UpdateStockComponent,
+    CompanyDetailComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule,
+    HttpClientModule,    
   ],
   providers: [],
   bootstrap: [AppComponent]

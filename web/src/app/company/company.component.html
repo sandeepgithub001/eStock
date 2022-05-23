@@ -1,31 +1,26 @@
 <div class="container">
     <h2>List of Companies</h2>
 
-    <a routerLink="/update-company/0" class="btn btn-primary pull-right">Add Company</a>
+    <a routerLink="/update-company/0" class="btn btn-primary pull-right"><i class="fa fa-add"></i> Add Company</a>
 
     <table class="table">
         <thead class="thead-dark">
             <tr>
-                <th>Firstname</th>
-                <th>Lastname</th>
-                <th>Email</th>
+                <th>Id</th>
+                <th>Code</th>
+                <th>Name</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>John</td>
-                <td>Doe</td>
-                <td>john@example.com</td>
-            </tr>
-            <tr>
-                <td>Mary</td>
-                <td>Moe</td>
-                <td>mary@example.com</td>
-            </tr>
-            <tr>
-                <td>July</td>
-                <td>Dooley</td>
-                <td>july@example.com</td>
+            <tr *ngFor="let item of ObjCompanyList;">
+                <td>{{item.id}}</td>
+                <td>{{item.code}}</td>
+                <td>{{item.name}}</td>
+                <td>
+                    <a href="/company/0" class="btn btn-primary ml-5"><i class="fa fa-pencil"></i> Edit</a>
+                    <a href="/company/0" class="btn btn-primary ml-5"><i class="fa fa-detail"></i> Details</a>
+                </td>
             </tr>
         </tbody>
     </table>
