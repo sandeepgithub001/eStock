@@ -7,7 +7,7 @@ namespace EStock.Services.Abstractions
 {
     public interface IStockRepository
     {
-        Task<int> AddStock(Stock stock);
+        Task<int> UpdateStockRecord(Stock stock);
         Task<List<Stock>> GetAllStock();
         Task<Stock> GetStockById(int id);
     }

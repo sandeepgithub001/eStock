@@ -38,7 +38,7 @@ namespace EStock.Api.Controllers
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] Stock value)
         {
-            var result = await _stockRepository.AddStock(value);
+            var result = await _stockRepository.UpdateStockRecord(value);
             return Ok(result);
         }
 

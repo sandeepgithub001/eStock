@@ -15,9 +15,9 @@ namespace EStock.Services.Services
         {
             _stockDataAccess = stockDataAccess;
         }
-        public Task<int> AddStock(Stock stock)
+        public Task<int> UpdateStockRecord(Stock stock)
         {
-            return _stockDataAccess.AddStockRecord(stock);
+            return _stockDataAccess.UpdateStockRecord(stock);
         }
 
         public Task<List<Stock>> GetAllStock()

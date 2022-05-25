@@ -16,16 +16,32 @@ namespace EStock.DataAccess
             _context = context;
         }
 
-        public async Task<int> AddCompanyRecord(Company company)
-        {
-            await _context.Companies.AddAsync(company);
-            return _context.SaveChanges();
-        }
+        //public async Task<int> AddCompanyRecord(Company company)
+        //{
+        //    await _context.Companies.AddAsync(company);
+        //    return _context.SaveChanges();
+        //}
 
-        public void UpdateCompanyRecord(Company company)
+        public async Task<int> UpdateCompanyRecord(Company company)
         {
-            _context.Companies.Update(company);
-            _context.SaveChanges();
+            if (company.id > 0)
+            {
+                var entity = await _context.Companies.FirstOrDefaultAsync(t => t.id == company.id);
+                entity.code = company.code;
+                entity.name = company.name;
+                entity.ceo = company.ceo;
+                entity.trunover = company.trunover;
+                entity.website = company.website;
+                entity.stockexchange = company.stockexchange;
+
+                _context.Companies.Update(entity).State = EntityState.Modified;
+                return _context.SaveChanges();
+            }
+            else
+            {
+                _context.Companies.Add(company);
+                return _context.SaveChanges();
+            }
         }
 
         public async Task<int> DeleteCompanyRecord(int id)
@@ -52,7 +68,7 @@ namespace EStock.DataAccess
             objCompanyStock.website = objCompany.website;
             objCompanyStock.stockexchange = objCompany.stockexchange;
 
-            objCompanyStock.stocks = _context.Stocks.Where(x=>x.companyid == id).ToList();
+            objCompanyStock.stocks = _context.Stocks.Where(x => x.companyid == id).ToList();
 
             return objCompanyStock;
         }

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+import { switchMap } from 'rxjs';
 import { CompanyService } from '../services/company.service';
 
 @Component({
@@ -7,21 +9,29 @@ import { CompanyService } from '../services/company.service';
   styleUrls: ['./company-detail.component.scss']
 })
 export class CompanyDetailComponent implements OnInit {
-  ObjCompanyStockList: any = [];
+  companyId: number = 0;
+  ObjCompanyStock: any = {};
 
   constructor(
-    private companyService: CompanyService
+    private companyService: CompanyService,
+    private route: ActivatedRoute,
   ) {
+    this.route.paramMap.subscribe(params => {
+      var id = params.get('id');
+      this.companyId = id == null ? 0 : parseInt(id);
+    });
   }
 
   ngOnInit(): void {
-    this.GetCompanyStockList();
+    if (this.companyId > 0) {
+      this.GetCompanyDetails(this.companyId);
+    }
   }
 
-  GetCompanyStockList() {
-    this.companyService.GetCompanyList().subscribe(
+  GetCompanyDetails(id: number) {
+    this.companyService.GetCompanyStock(id).subscribe(
       res => {
-        this.ObjCompanyStockList = res;
+        this.ObjCompanyStock = res;
       },
       error => {
         console.log(error);

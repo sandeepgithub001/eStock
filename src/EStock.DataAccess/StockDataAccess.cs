@@ -16,16 +16,30 @@ namespace EStock.DataAccess
             _context = context;
         }
 
-        public async Task<int> AddStockRecord(Stock stock)
-        {
-            await _context.Stocks.AddAsync(stock);
-            return _context.SaveChanges();
-        }
+        //public async Task<int> AddStockRecord(Stock stock)
+        //{
+        //    await _context.Stocks.AddAsync(stock);
+        //    return _context.SaveChanges();
+        //}
 
-        public void UpdateStockRecord(Stock stock)
+        public async Task<int> UpdateStockRecord(Stock stock)
         {
-            _context.Stocks.Update(stock);
-            _context.SaveChanges();
+            if (stock.id > 0)
+            {
+                var entity = await _context.Stocks.FirstOrDefaultAsync(t => t.id == stock.id);
+                entity.companyid = stock.companyid;
+                entity.stockprice = stock.stockprice;
+                entity.startdate = stock.startdate;
+                entity.enddate = stock.enddate;
+
+                _context.Stocks.Update(entity).State = EntityState.Modified;
+                return _context.SaveChanges();
+            }
+            else
+            {
+                _context.Stocks.Add(stock);
+                return _context.SaveChanges();
+            }
         }
 
         public void DeleteStocksRecord(int id)

@@ -34,9 +34,9 @@ namespace EStock.Services.Services
             return _companyDataAccess.GetCompanyStock(id);
         }
 
-        public Task<int> InsertCompany(Company company)
+        public Task<int> UpdateCompanyRecord(Company company)
         {
-            return _companyDataAccess.AddCompanyRecord(company);
+            return _companyDataAccess.UpdateCompanyRecord(company);
         }
     }
 }

@@ -33,7 +33,7 @@ namespace EStock.Api.Controllers
         }
 
         // GET api/<CompanyController>/5
-        [HttpGet("{id}")]
+        [HttpGet("GetCompanyStock/{id}")]
         public async Task<IActionResult> GetCompanyStock(int id)
         {
             var result = await _companyRepository.GetCompanyStock(id);
@@ -44,7 +44,7 @@ namespace EStock.Api.Controllers
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] Company value)
         {
-            var result = await _companyRepository.InsertCompany(value);
+            var result = await _companyRepository.UpdateCompanyRecord(value);
             return Ok(result);
         }
 

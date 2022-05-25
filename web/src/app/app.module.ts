@@ -9,6 +9,8 @@ import { UpdateCompanyComponent } from './update-company/update-company.componen
 import { UpdateStockComponent } from './update-stock/update-stock.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CompanyDetailComponent } from './company-detail/company-detail.component';
+import { StockComponent } from './stock/stock.component';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -16,16 +18,17 @@ import { CompanyDetailComponent } from './company-detail/company-detail.componen
     CompanyComponent,
     UpdateCompanyComponent,
     UpdateStockComponent,
-    CompanyDetailComponent
+    CompanyDetailComponent,
+    StockComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule,    
+    HttpClientModule,        
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
