@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace EStock.DataAccess
@@ -39,9 +40,21 @@ namespace EStock.DataAccess
             return _context.Companies.FirstOrDefaultAsync(t => t.id == id);
         }
 
-        public Task<CompanyStock> GetCompanyStock(int id)
+        public async Task<CompanyStock> GetCompanyStock(int id)
         {
-            return _context.Companies.FirstOrDefaultAsync(t => t.id == id);
+            CompanyStock objCompanyStock = new CompanyStock();
+            var objCompany = await _context.Companies.FirstOrDefaultAsync(t => t.id == id);
+            objCompanyStock.id = objCompany.id;
+            objCompanyStock.code = objCompany.code;
+            objCompanyStock.name = objCompany.name;
+            objCompanyStock.ceo = objCompany.ceo;
+            objCompanyStock.trunover = objCompany.trunover;
+            objCompanyStock.website = objCompany.website;
+            objCompanyStock.stockexchange = objCompany.stockexchange;
+
+            objCompanyStock.stocks = _context.Stocks.Where(x=>x.companyid == id).ToList();
+
+            return objCompanyStock;
         }
 
         public Task<List<Company>> GetCompanyRecords()
