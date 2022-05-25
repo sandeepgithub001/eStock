@@ -11,6 +11,7 @@ namespace EStock.Services.Abstractions
         Task<int> DeleteCompany(int id);
         Task<List<Company>> GetAllCompany();
         Task<Company> GetCompanyById(int id);
+        Task<CompanyStock> GetCompanyStock(int id);
 
     }
 }

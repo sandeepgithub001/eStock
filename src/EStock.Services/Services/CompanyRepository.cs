@@ -28,6 +28,11 @@ namespace EStock.Services.Services
         {
             return _companyDataAccess.GetCompanySingleRecord(id);
         }
+        
+        public Task<CompanyStock> GetCompanyStock(int id)
+        {
+            return _companyDataAccess.GetCompanyStock(id);
+        }
 
         public Task<int> InsertCompany(Company company)
         {

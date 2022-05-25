@@ -39,6 +39,11 @@ namespace EStock.DataAccess
             return _context.Companies.FirstOrDefaultAsync(t => t.id == id);
         }
 
+        public Task<CompanyStock> GetCompanyStock(int id)
+        {
+            return _context.Companies.FirstOrDefaultAsync(t => t.id == id);
+        }
+
         public Task<List<Company>> GetCompanyRecords()
         {
             return _context.Companies.ToListAsync();

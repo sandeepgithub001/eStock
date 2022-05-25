@@ -32,6 +32,14 @@ namespace EStock.Api.Controllers
             return Ok(result);
         }
 
+        // GET api/<CompanyController>/5
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetCompanyStock(int id)
+        {
+            var result = await _companyRepository.GetCompanyStock(id);
+            return Ok(result);
+        }
+
         // POST api/<CompanyController>
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] Company value)
