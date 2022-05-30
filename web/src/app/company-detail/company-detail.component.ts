@@ -10,7 +10,13 @@ import { CompanyService } from '../services/company.service';
 })
 export class CompanyDetailComponent implements OnInit {
   companyId: number = 0;
+  startDate: Date = new Date();
+  endDate: Date = new Date();
   ObjCompanyStock: any = {};
+
+  objMin: number = 0;
+  objMax: number = 0;
+  objAverage: number = 0;
 
   constructor(
     private companyService: CompanyService,
@@ -32,6 +38,34 @@ export class CompanyDetailComponent implements OnInit {
     this.companyService.GetCompanyStock(id).subscribe(
       res => {
         this.ObjCompanyStock = res;
+        debugger;
+        var stocks = res.stocks;
+
+        var lowestNumber = stocks[0].stockPrice;
+        var highestNumber = stocks[0].stockPrice;    
+        
+        stocks.forEach(function (keyValue: { stockPrice: number; }, index: number, stocks: any) {
+          if(index > 0) {
+            if(keyValue.stockPrice < lowestNumber){
+              lowestNumber = keyValue.stockPrice;
+            }
+            if(keyValue.stockPrice > highestNumber) {
+              highestNumber = keyValue.stockPrice;
+            }
+          }
+        });
+
+        var sum = 0;
+        for (var i = 0; i < stocks.length; i++) {
+          sum += parseInt(stocks[i].stockPrice, 10); //don't forget to add the base
+        }
+
+        var avg = sum/stocks.length;
+
+        this.objMin = lowestNumber;
+        this.objMax = highestNumber;
+        this.objAverage = avg;
+
       },
       error => {
         console.log(error);

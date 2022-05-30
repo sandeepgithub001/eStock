@@ -15,6 +15,21 @@
             <input type="text" class="form-control mb-2 mr-sm-2" [(ngModel)]="ObjCompanyStock.companyName" readonly>
         </div>
     </div>
+    <div class="row">
+        <div class="col-md-2">
+            <label class=" mr-sm-2">From:</label>
+        </div>
+        <div class="col-md-auto">
+            <div class="row">
+                <div class="col-md-auto">
+                    <input type="date" class="form-control mb-2 mr-sm-2" [(ngModel)]="startDate">
+                </div>
+                <div class="col-md-auto">
+                    <input type="date" class="form-control mb-2 mr-sm-2" [(ngModel)]="endDate">
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <br>
 <div class="container">
@@ -39,4 +54,25 @@
             </tr>
         </tbody>
     </table>
+</div>
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-md-auto">
+            <table class="table table-bordered">
+                <tr>
+                    <td>MIN</td>
+                    <td>{{objMin}}</td>
+                </tr>
+                <tr>
+                    <td>MAX</td>
+                    <td>{{objMax}}</td>
+                </tr>
+                <tr>
+                    <td>AVERAGE</td>
+                    <td>{{objAverage}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
 </div>
