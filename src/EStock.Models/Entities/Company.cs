@@ -40,5 +40,11 @@ namespace EStock.Models.Entities
         [Column(TypeName = "varchar")]
         [StringLength(50, ErrorMessage = "StockExchange cannot exceed 50 characters.")]
         public string StockExchange { get; set; }
+
+        [Required]
+        public DateTime CreatedOn { get; set; }
+
+        public DateTime ModifiedOn { get; set; }
+
     }
 }

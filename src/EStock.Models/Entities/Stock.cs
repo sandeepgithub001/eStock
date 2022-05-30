@@ -26,5 +26,10 @@ namespace EStock.Models.Entities
         [Required]
         public DateTime EndDate { get; set; }
 
+        [Required]
+        public DateTime CreatedOn { get; set; }
+
+        public DateTime ModifiedOn { get; set; }
+
     }
 }
