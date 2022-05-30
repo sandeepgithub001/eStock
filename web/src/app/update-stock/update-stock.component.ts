@@ -27,21 +27,21 @@ export class UpdateStockComponent implements OnInit {
     this.route.paramMap.subscribe(params => {
       var id = params.get('id');
       this.companyId = id == null ? 0 : parseInt(id);
-      if (this.companyId > 0) {
-        this.GetStockById(this.companyId);
-      }
     });
-    this.GetCompanyList();
   }
 
   ngOnInit(): void {
     this.ObjForm = this.fb.group({
-      id: [this.companyId],
-      companyId: ['', [Validators.required]],
+      id: [0],
+      companyId: [this.companyId, [Validators.required]],
+      companyName: ['', [Validators.required]],
       stockPrice: ['', [Validators.required]],
-      startdate: [new Date()],
+      startDate: [new Date()],
       endDate: [new Date()],
     });
+    if (this.companyId > 0) {
+      this.GetCompanyById(this.companyId);
+    }
   }
 
   //convenience getter for easy access to form fields
@@ -62,7 +62,7 @@ export class UpdateStockComponent implements OnInit {
       res => {
         if (res > 0) {
           alert('Success!');
-          this.router.navigate(['/stock']);
+          this.router.navigate(['/company/', this.companyId]);
         }
         else {
           alert('Failed!');
@@ -73,19 +73,10 @@ export class UpdateStockComponent implements OnInit {
       });
   }
 
-
-  GetStockById(id: number) {
-    this.stockService.GetStockById(id).subscribe(
+  GetCompanyById(id: number) {
+    this.companyService.GetCompanyById(id).subscribe(
       res => {
-        this.ObjForm.patchValue({
-          id: res.id,
-          code: res.code,
-          name: res.name,
-          ceo: res.ceo,
-          trunOver: res.trunOver,
-          website: res.website,
-          stockExchange: res.stockExchange,
-        });
+        this.ObjForm.controls["companyName"].setValue(res.companyName);
       },
       error => {
         console.log(error);
@@ -104,6 +95,6 @@ export class UpdateStockComponent implements OnInit {
 
 
   onCancel(ev: any) {
-    this.router.navigate(['/stock']);
+    this.router.navigate(['/company/', this.companyId]);
   }
 }

@@ -32,12 +32,14 @@ namespace EStock.DataAccess.Implementation
                 entity.StockPrice = stock.StockPrice;
                 entity.StartDate = stock.StartDate;
                 entity.EndDate = stock.EndDate;
+                entity.ModifiedOn = DateTime.Now;
 
                 _context.Stocks.Update(entity).State = EntityState.Modified;
                 return _context.SaveChanges();
             }
             else
             {
+                stock.CreatedOn = DateTime.Now;
                 _context.Stocks.Add(stock);
                 return _context.SaveChanges();
             }

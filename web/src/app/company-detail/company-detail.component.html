@@ -4,7 +4,7 @@
             <label class=" mr-sm-2">Company Code:</label>
         </div>
         <div class="col-md-auto">
-            <input  type="text" class="form-control mb-2 mr-sm-2" [(ngModel)]="ObjCompanyStock.code" readonly>
+            <input  type="text" class="form-control mb-2 mr-sm-2" [(ngModel)]="ObjCompanyStock.companyCode" readonly>
         </div>
     </div>
     <div class="row">
@@ -12,13 +12,14 @@
             <label class=" mr-sm-2">Company Name:</label>
         </div>
         <div class="col-md-auto">
-            <input type="text" class="form-control mb-2 mr-sm-2" [(ngModel)]="ObjCompanyStock.name" readonly>
+            <input type="text" class="form-control mb-2 mr-sm-2" [(ngModel)]="ObjCompanyStock.companyName" readonly>
         </div>
     </div>
 </div>
 <br>
 <div class="container">
     <h3>List of Stock</h3>
+    <a routerLink="/add-company-stock/{{ObjCompanyStock.id}}" class="btn btn-primary pull-right"><i class="fa fa-add"></i> Add Stock</a>
     <table class="table">
         <thead class="thead-dark">
             <tr>
@@ -29,9 +30,9 @@
         </thead>
         <tbody>
             <tr *ngFor="let item of ObjCompanyStock.stocks;">
-                <td>{{item.stockprice}}</td>
-                <td>{{item.startdate}}</td>
-                <td>{{item.startdate}}</td>
+                <td>{{item.stockPrice}}</td>
+                <td>{{item.createdOn | date:'dd-MMM-yyyy'}}</td>
+                <td>{{item.createdOn | date:'hh:mm:ss'}}</td>
             </tr>
             <tr *ngIf="ObjCompanyStock.stocks.length == 0">
                 <td colspan="3" class="text-center">No data found!</td>

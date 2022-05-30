@@ -11,6 +11,7 @@ const routes: Routes = [
   { path: 'company/:id', component: CompanyDetailComponent },
   { path: 'update-company/:id', component: UpdateCompanyComponent },
   { path: 'stock', component: StockComponent },
+  { path: 'add-company-stock/:id', component: UpdateStockComponent },
   { path: 'update-stock/:id', component: UpdateStockComponent },
   { path: '', redirectTo: '/company', pathMatch: 'full' }, // redirect to company
   { path: '**', component: CompanyComponent },

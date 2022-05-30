@@ -14,7 +14,7 @@ namespace EStock.Models.Entities
         [Required]
         [Column(TypeName = "varchar")]
         [StringLength(10, ErrorMessage = "CompanyCode cannot exceed 10 characters.")]
-        public string ComapnyCode { get; set; }
+        public string CompanyCode { get; set; }
 
         [Required]
         [Column(TypeName = "varchar")]
@@ -44,7 +44,7 @@ namespace EStock.Models.Entities
         [Required]
         public DateTime CreatedOn { get; set; }
 
-        public DateTime ModifiedOn { get; set; }
+        public DateTime? ModifiedOn { get; set; }
 
     }
 }

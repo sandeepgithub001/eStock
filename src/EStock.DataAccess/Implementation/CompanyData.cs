@@ -29,18 +29,20 @@ namespace EStock.DataAccess.Implementation
             if (company.Id > 0)
             {
                 var entity = await _context.Companies.FirstOrDefaultAsync(t => t.Id == company.Id);
-                entity.ComapnyCode = company.ComapnyCode;
+                entity.CompanyCode = company.CompanyCode;
                 entity.CompanyName = company.CompanyName;
                 entity.CompanyCeo = company.CompanyCeo;
                 entity.Turnover = company.Turnover;
                 entity.Website = company.Website;
                 entity.StockExchange = company.StockExchange;
+                entity.ModifiedOn = DateTime.Now;
 
                 _context.Companies.Update(entity).State = EntityState.Modified;
                 return _context.SaveChanges();
             }
             else
             {
+                company.CreatedOn = DateTime.Now;
                 _context.Companies.Add(company);
                 return _context.SaveChanges();
             }
@@ -63,7 +65,7 @@ namespace EStock.DataAccess.Implementation
             CompanyStock objCompanyStock = new();
             var objCompany = await _context.Companies.FirstOrDefaultAsync(t => t.Id == id);
             objCompanyStock.Id = objCompany.Id;
-            objCompanyStock.CompanyCode = objCompany.ComapnyCode;
+            objCompanyStock.CompanyCode = objCompany.CompanyCode;
             objCompanyStock.CompanyName = objCompany.CompanyName;
             objCompanyStock.CompanyCeo = objCompany.CompanyCeo;
             objCompanyStock.Turnover = objCompany.Turnover;

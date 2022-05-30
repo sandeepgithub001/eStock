@@ -5,9 +5,9 @@
                 <label for="email" class=" mr-sm-2">Company Code:</label>
             </div>
             <div class="col-md-auto">                
-                <input type="email" class="form-control mb-2 mr-sm-2" formControlName="code" required>
-                <div *ngIf="submitted && form['code'].errors" class="error">
-                    <div *ngIf="form['code'].errors['required']">
+                <input type="email" class="form-control mb-2 mr-sm-2" formControlName="companyCode" required>
+                <div *ngIf="submitted && form['companyCode'].errors" class="error">
+                    <div *ngIf="form['companyCode'].errors['required']">
                         This field is required
                     </div>
                 </div>
@@ -18,9 +18,9 @@
                 <label for="email" class=" mr-sm-2">Company Name:</label>
             </div>
             <div class="col-md-auto">                
-                <input type="email" class="form-control mb-2 mr-sm-2" formControlName="name">
-                <div *ngIf="submitted && form['name'].errors" class="error">
-                    <div *ngIf="form['name'].errors['required']">
+                <input type="email" class="form-control mb-2 mr-sm-2" formControlName="companyName">
+                <div *ngIf="submitted && form['companyName'].errors" class="error">
+                    <div *ngIf="form['companyName'].errors['required']">
                         This field is required
                     </div>
                 </div>
@@ -31,15 +31,20 @@
                 <label for="email" class=" mr-sm-2">Company CEO:</label>
             </div>
             <div class="col-md-auto">                
-                <input type="email" class="form-control mb-2 mr-sm-2" formControlName="ceo">
+                <input type="email" class="form-control mb-2 mr-sm-2" formControlName="companyCeo">
+                <div *ngIf="submitted && form['companyCeo'].errors" class="error">
+                    <div *ngIf="form['companyCeo'].errors['required']">
+                        This field is required
+                    </div>
+                </div>
             </div>
         </div>
         <div class="row">
             <div class="col-md-2">
-                <label for="email" class=" mr-sm-2">Company TurnOver:</label>
+                <label for="email" class=" mr-sm-2">Company Turnover:</label>
             </div>
             <div class="col-md-auto">                
-                <input type="email" class="form-control mb-2 mr-sm-2" formControlName="turnOver">
+                <input type="email" class="form-control mb-2 mr-sm-2" formControlName="turnover">
             </div>
         </div>
         <div class="row">

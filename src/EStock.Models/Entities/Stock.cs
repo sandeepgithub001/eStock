@@ -11,13 +11,11 @@ namespace EStock.Models.Entities
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        [ForeignKey("FK_CompanyId")]
+        [ForeignKey("companies")]
         [Required]
         public int CompanyId { get; set; }
 
         [Required]
-        [Column(TypeName = "varchar")]
-        [StringLength(20, ErrorMessage = "StockPrice cannot exceed 20 characters.")]
         public decimal StockPrice { get; set; }
 
         [Required]
@@ -29,7 +27,7 @@ namespace EStock.Models.Entities
         [Required]
         public DateTime CreatedOn { get; set; }
 
-        public DateTime ModifiedOn { get; set; }
+        public DateTime? ModifiedOn { get; set; }
 
     }
 }

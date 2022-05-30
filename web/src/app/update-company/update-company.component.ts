@@ -31,10 +31,10 @@ export class UpdateCompanyComponent implements OnInit {
   ngOnInit(): void {
     this.ObjForm = this.fb.group({
       id: [this.companyId],
-      code: ['', [Validators.required]],
-      name: ['', [Validators.required]],
-      ceo: [],
-      trunOver: [],
+      companyCode: ['', [Validators.required]],
+      companyName: ['', [Validators.required]],
+      companyCeo: [],
+      turnover: [],
       website: [],
       stockExchange: []
     });
@@ -71,10 +71,10 @@ export class UpdateCompanyComponent implements OnInit {
       res => {
         this.ObjForm.patchValue({
           id: res.id,
-          code: res.code,
-          name: res.name,
-          ceo: res.ceo,
-          trunOver: res.trunOver,
+          companyCode: res.companyCode,
+          companyName: res.companyName,
+          companyCeo: res.companyCeo,
+          turnover: res.turnover,
           website: res.website,
           stockExchange: res.stockExchange,
         });

@@ -5,14 +5,7 @@
                 <label class=" mr-sm-2">Company:</label>
             </div>
             <div class="col-md-auto">                
-                <select class="form-control mb-2 mr-sm-2" formControlName="companyId" required>
-                    <option *ngFor="let item of objCompanies" value="{{item.id}}">{{item.name}}</option>
-                </select>
-                <div *ngIf="submitted && form['companyId'].errors" class="error">
-                    <div *ngIf="form['companyId'].errors['required']">
-                        This field is required
-                    </div>
-                </div>
+                <input type="email" class="form-control mb-2 mr-sm-2" formControlName="companyName" readonly>
             </div>
         </div>
         <div class="row">
@@ -34,6 +27,11 @@
             </div>
             <div class="col-md-auto">                
                 <input type="date" class="form-control mb-2 mr-sm-2" formControlName="startDate">
+                <div *ngIf="submitted && form['startDate'].errors" class="error">
+                    <div *ngIf="form['startDate'].errors['required']">
+                        This field is required
+                    </div>
+                </div>
             </div>
         </div>
         <div class="row">
@@ -42,6 +40,11 @@
             </div>
             <div class="col-md-auto">                
                 <input type="date" class="form-control mb-2 mr-sm-2" formControlName="endDate">
+                <div *ngIf="submitted && form['endDate'].errors" class="error">
+                    <div *ngIf="form['endDate'].errors['required']">
+                        This field is required
+                    </div>
+                </div>
             </div>
         </div>
         <br>
