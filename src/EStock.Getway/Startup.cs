@@ -6,6 +6,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Ocelot.DependencyInjection;
+using Ocelot.Cache.CacheManager;
+using Ocelot.Middleware;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,6 +34,12 @@ namespace EStock.Getway
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "EStock.Getway", Version = "v1" });
             });
+
+            services.AddOcelot(Configuration)
+                .AddCacheManager(x =>
+                {
+                    x.WithDictionaryHandle();
+                });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -44,6 +53,8 @@ namespace EStock.Getway
             }
 
             app.UseRouting();
+
+            app.UseOcelot();
 
             app.UseAuthorization();
 

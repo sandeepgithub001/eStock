@@ -1,5 +1,5 @@
-﻿using EStock.Models;
-using EStock.Services.Abstractions;
+﻿using EStock.Models.Entities;
+using EStock.Services.Abstraction;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
@@ -12,17 +12,17 @@ namespace EStock.Api.Controllers
     [ApiController]
     public class StockController : ControllerBase
     {
-        private readonly IStockRepository _stockRepository;
-        public StockController(IStockRepository stockRepository)
+        private readonly IRequestProcessor _requestProcessor;
+        public StockController(IRequestProcessor requestProcessor)
         {
-            _stockRepository = stockRepository;
+            _requestProcessor = requestProcessor;
         }
 
         // GET: api/<StockController>
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            var result = await _stockRepository.GetAllStock();
+            var result = await _requestProcessor.GetAllStock();
             return Ok(result);
         }
 
@@ -30,7 +30,7 @@ namespace EStock.Api.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
         {
-            var result = await _stockRepository.GetStockById(id);
+            var result = await _requestProcessor.GetStockById(id);
             return Ok(result);
         }
 
@@ -38,7 +38,8 @@ namespace EStock.Api.Controllers
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] Stock value)
         {
-            var result = await _stockRepository.UpdateStockRecord(value);
+
+            var result = await _requestProcessor.UpdateStockRecord(value);
             return Ok(result);
         }
 

@@ -1,5 +1,5 @@
-﻿using EStock.Models;
-using EStock.Services.Abstractions;
+﻿using EStock.Models.Entities;
+using EStock.Services.Abstraction;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
@@ -10,17 +10,17 @@ namespace EStock.Api.Controllers
     [ApiController]
     public class CompanyController : ControllerBase
     {
-        private readonly ICompanyRepository _companyRepository;
-        public CompanyController(ICompanyRepository companyRepository)
+        private readonly IRequestProcessor _requestProcessor;
+        public CompanyController(IRequestProcessor requestProcessor)
         {
-            _companyRepository = companyRepository;
+            _requestProcessor = requestProcessor;
         }
 
         // GET: api/<CompanyController>
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            var result = await _companyRepository.GetAllCompany();
+            var result = await _requestProcessor.GetAllCompany();
             return Ok(result);
         }
 
@@ -28,7 +28,7 @@ namespace EStock.Api.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
         {
-            var result = await _companyRepository.GetCompanyById(id);
+            var result = await _requestProcessor.GetCompanyById(id);
             return Ok(result);
         }
 
@@ -36,7 +36,7 @@ namespace EStock.Api.Controllers
         [HttpGet("GetCompanyStock/{id}")]
         public async Task<IActionResult> GetCompanyStock(int id)
         {
-            var result = await _companyRepository.GetCompanyStock(id);
+            var result = await _requestProcessor.GetCompanyStock(id);
             return Ok(result);
         }
 
@@ -44,7 +44,7 @@ namespace EStock.Api.Controllers
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] Company value)
         {
-            var result = await _companyRepository.UpdateCompanyRecord(value);
+            var result = await _requestProcessor.UpdateCompanyRecord(value);
             return Ok(result);
         }
 
@@ -52,7 +52,7 @@ namespace EStock.Api.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            var result = await _companyRepository.DeleteCompany(id);
+            var result = await _requestProcessor.DeleteCompany(id);
             return Ok(result);
         }
     }

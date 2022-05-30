@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EStock.Models.Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -6,14 +7,14 @@ namespace EStock.Models
 {
     public class CompanyStock
     {
-        public int id { get; set; }
-        public string code { get; set; }
-        public string name { get; set; }
-        public string ceo { get; set; }
-        public string trunover { get; set; }
-        public string website { get; set; }
-        public string stockexchange { get; set; }
-        public List<Stock> stocks { get; set; }
+        public int Id { get; set; }
+        public string CompanyCode { get; set; }
+        public string CompanyName { get; set; }
+        public string CompanyCeo { get; set; }
+        public string Turnover { get; set; }
+        public string Website { get; set; }
+        public string StockExchange { get; set; }
+        public List<Stock> Stocks { get; set; }
 
     }
 }
