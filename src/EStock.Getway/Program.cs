@@ -21,6 +21,12 @@ namespace EStock.Getway
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
-                });
+                })
+            .ConfigureAppConfiguration((hostingContext, config) =>
+            {
+                config
+                .SetBasePath(hostingContext.HostingEnvironment.ContentRootPath)
+                .AddJsonFile("Ocelot.json", optional: false, reloadOnChange: true);
+            });
     }
 }

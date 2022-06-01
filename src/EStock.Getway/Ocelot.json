@@ -2,7 +2,7 @@
 {
   "Routes": [
     {
-      "DownstreamPathTemplate": "/api/Customer",
+      "DownstreamPathTemplate": "/api/Company",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -12,15 +12,16 @@
       ],
       "FileCacheOptions": {
         "TtlSeconds": 30,
-        "Region": "customercaching"
+        "Region": "companycaching"
       },
-      "UpstreamPathTemplate": "/Customer",
+      "UpstreamPathTemplate": "/Company",
       "UpstreamHttpMethod": [
+        "POST",
         "GET"
       ]
     },
     {
-      "DownstreamPathTemplate": "/api/Product",
+      "DownstreamPathTemplate": "/api/Company/{id}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -37,7 +38,73 @@
         "PeriodTimespan": 1,
         "Limit": 1
       },
-      "UpstreamPathTemplate": "/Product",
+      "UpstreamPathTemplate": "/Company/{id}",
+      "UpstreamHttpMethod": [
+        "GET",
+        "DELETE"
+      ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/Company/GetCompanyStock/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": "5000"
+        }
+      ],
+      "RateLimitOptions": {
+        "ClientWhitelist": [
+
+        ],
+        "EnableRateLimiting": true,
+        "Period": "5s",
+        "PeriodTimespan": 1,
+        "Limit": 1
+      },
+      "UpstreamPathTemplate": "/Company/GetCompanyStock/{id}",
+      "UpstreamHttpMethod": [
+        "GET"
+      ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/Stock",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": "5000"
+        }
+      ],
+      "FileCacheOptions": {
+        "TtlSeconds": 30,
+        "Region": "stockcaching"
+      },
+      "UpstreamPathTemplate": "/Stock",
+      "UpstreamHttpMethod": [
+        "POST",
+        "GET"
+      ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/Stock/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": "5000"
+        }
+      ],
+      "RateLimitOptions": {
+        "ClientWhitelist": [
+
+        ],
+        "EnableRateLimiting": true,
+        "Period": "5s",
+        "PeriodTimespan": 1,
+        "Limit": 1
+      },
+      "UpstreamPathTemplate": "/Stock/{id}",
       "UpstreamHttpMethod": [
         "GET"
       ]
