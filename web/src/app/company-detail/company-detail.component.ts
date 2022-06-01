@@ -13,6 +13,7 @@ export class CompanyDetailComponent implements OnInit {
   startDate: Date = new Date();
   endDate: Date = new Date();
   ObjCompanyStock: any = {};
+  ObjSearchModel: any = {};
 
   objMin: number = 0;
   objMax: number = 0;
@@ -30,17 +31,18 @@ export class CompanyDetailComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.companyId > 0) {
-      this.GetCompanyDetails(this.companyId);
+      this.ObjSearchModel.companyId = this.companyId;
+      this.ObjSearchModel.startDate = this.startDate;
+      this.ObjSearchModel.endDate = this.endDate;
+      this.GetCompanyDetails(this.ObjSearchModel);
     }
   }
 
-  GetCompanyDetails(id: number) {
-    this.companyService.GetCompanyStock(id).subscribe(
+  GetCompanyDetails(model: any) {
+    this.companyService.GetCompanyStock(model).subscribe(
       res => {
         this.ObjCompanyStock = res;
-        debugger;
         var stocks = res.stocks;
-
         var lowestNumber = stocks[0].stockPrice;
         var highestNumber = stocks[0].stockPrice;    
         
@@ -72,4 +74,10 @@ export class CompanyDetailComponent implements OnInit {
       });
   }
 
+  OnDateChange(ev: any) {
+    this.ObjSearchModel.companyId = this.companyId;
+    this.ObjSearchModel.startDate = this.startDate;
+    this.ObjSearchModel.endDate = this.endDate;
+    this.GetCompanyDetails(this.ObjSearchModel);
+  }
 }

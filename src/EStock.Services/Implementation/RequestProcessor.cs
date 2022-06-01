@@ -105,11 +105,11 @@ namespace BMS.Services.Implementation
             }
         }
 
-        public Task<CompanyStock> GetCompanyStock(int id)
+        public Task<CompanyStock> GetCompanyStock(CompanyStockRequest data)
         {
             try
             {
-                return _companyData.GetCompanyStock(id);
+                return _companyData.GetCompanyStock(data);
             }
             catch (Exception ex)
             {

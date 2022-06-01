@@ -19,8 +19,8 @@ export class CompanyService {
         return this.httpService.get("Company/" + id);
     }
 
-    public GetCompanyStock(id: number) {
-        return this.httpService.get("Company/GetCompanyStock/" + id);
+    public GetCompanyStock(data: any) {
+        return this.httpService.post("Company/GetCompanyStock", data);
     }
 
     public UpdateCompany(data: any) {

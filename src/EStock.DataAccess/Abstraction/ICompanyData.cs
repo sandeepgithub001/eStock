@@ -14,7 +14,7 @@ namespace EStock.DataAccess.Abstraction
         Task<int> UpdateCompanyRecord(Company company);
         Task<int> DeleteCompanyRecord(int id);
         Task<Company> GetCompanySingleRecord(int id);
-        Task<CompanyStock> GetCompanyStock(int id);
+        Task<CompanyStock> GetCompanyStock(CompanyStockRequest data);
         Task<List<Company>> GetCompanyRecords();
     }
 }

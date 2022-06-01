@@ -12,7 +12,7 @@ namespace EStock.Services.Abstraction
         Task<int> DeleteCompany(int id);
         Task<List<Company>> GetAllCompany();
         Task<Company> GetCompanyById(int id);
-        Task<CompanyStock> GetCompanyStock(int id);
+        Task<CompanyStock> GetCompanyStock(CompanyStockRequest data);
         Task<int> UpdateStockRecord(Stock stock);
         Task<List<Stock>> GetAllStock();
         Task<Stock> GetStockById(int id);

@@ -1,4 +1,5 @@
-﻿using EStock.Models.Entities;
+﻿using EStock.Models;
+using EStock.Models.Entities;
 using EStock.Services.Abstraction;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -33,10 +34,10 @@ namespace EStock.Api.Controllers
         }
 
         // GET api/<CompanyController>/5
-        [HttpGet("GetCompanyStock/{id}")]
-        public async Task<IActionResult> GetCompanyStock(int id)
+        [HttpPost("GetCompanyStock")]
+        public async Task<IActionResult> GetCompanyStock([FromBody] CompanyStockRequest data)
         {
-            var result = await _requestProcessor.GetCompanyStock(id);
+            var result = await _requestProcessor.GetCompanyStock(data);
             return Ok(result);
         }
 

@@ -4,7 +4,7 @@
             <label class=" mr-sm-2">Company Code:</label>
         </div>
         <div class="col-md-auto">
-            <input  type="text" class="form-control mb-2 mr-sm-2" [(ngModel)]="ObjCompanyStock.companyCode" readonly>
+            <input type="text" class="form-control mb-2 mr-sm-2" [(ngModel)]="ObjCompanyStock.companyCode" readonly>
         </div>
     </div>
     <div class="row">
@@ -22,10 +22,12 @@
         <div class="col-md-auto">
             <div class="row">
                 <div class="col-md-auto">
-                    <input type="date" class="form-control mb-2 mr-sm-2" [(ngModel)]="startDate">
+                    <input type="date" class="form-control mb-2 mr-sm-2" [(ngModel)]="startDate"
+                        (change)="OnDateChange($event)">
                 </div>
                 <div class="col-md-auto">
-                    <input type="date" class="form-control mb-2 mr-sm-2" [(ngModel)]="endDate">
+                    <input type="date" class="form-control mb-2 mr-sm-2" [(ngModel)]="endDate"
+                        (change)="OnDateChange($event)">
                 </div>
             </div>
         </div>
@@ -34,7 +36,8 @@
 <br>
 <div class="container">
     <h3>List of Stock</h3>
-    <a routerLink="/add-company-stock/{{ObjCompanyStock.id}}" class="btn btn-primary pull-right"><i class="fa fa-add"></i> Add Stock</a>
+    <a routerLink="/add-company-stock/{{ObjCompanyStock.id}}" class="btn btn-primary pull-right"><i
+            class="fa fa-add"></i> Add Stock</a>
     <table class="table">
         <thead class="thead-dark">
             <tr>
@@ -69,7 +72,7 @@
                     <td>{{objMax}}</td>
                 </tr>
                 <tr>
-                    <td>AVERAGE</td>
+                    <td>AVG</td>
                     <td>{{objAverage}}</td>
                 </tr>
             </table>

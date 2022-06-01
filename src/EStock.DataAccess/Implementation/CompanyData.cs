@@ -60,10 +60,10 @@ namespace EStock.DataAccess.Implementation
             return _context.Companies.FirstOrDefaultAsync(t => t.Id == id);
         }
 
-        public async Task<CompanyStock> GetCompanyStock(int id)
+        public async Task<CompanyStock> GetCompanyStock(CompanyStockRequest data)
         {
             CompanyStock objCompanyStock = new();
-            var objCompany = await _context.Companies.FirstOrDefaultAsync(t => t.Id == id);
+            var objCompany = await _context.Companies.FirstOrDefaultAsync(t => t.Id == data.CompanyId);
             objCompanyStock.Id = objCompany.Id;
             objCompanyStock.CompanyCode = objCompany.CompanyCode;
             objCompanyStock.CompanyName = objCompany.CompanyName;
@@ -72,7 +72,7 @@ namespace EStock.DataAccess.Implementation
             objCompanyStock.Website = objCompany.Website;
             objCompanyStock.StockExchange = objCompany.StockExchange;
 
-            objCompanyStock.Stocks = _context.Stocks.Where(x => x.CompanyId == id).ToList();
+            objCompanyStock.Stocks = _context.Stocks.Where(x => x.CompanyId == data.CompanyId).ToList();
 
             return objCompanyStock;
         }

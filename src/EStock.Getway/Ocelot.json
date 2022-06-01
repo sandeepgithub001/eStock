@@ -16,11 +16,11 @@
       "UpstreamPathTemplate": "/api/Company",
       "UpstreamHttpMethod": [
         "POST", "GET"
-      ],
-      "AuthenticationOptions": {
-        "AuthenticationProviderKey": "Bearer",
-        "AllowedScopes": []
-      }
+      ]
+      //"AuthenticationOptions": {
+      //  "AuthenticationProviderKey": "Bearer",
+      //  "AllowedScopes": []
+      //}
     },
     {
       "DownstreamPathTemplate": "/api/Company/{id}",
@@ -44,14 +44,14 @@
       "UpstreamHttpMethod": [
         "GET",
         "DELETE"
-      ],
-      "AuthenticationOptions": {
-        "AuthenticationProviderKey": "Bearer",
-        "AllowedScopes": []
-      }
+      ]
+      //"AuthenticationOptions": {
+      //  "AuthenticationProviderKey": "Bearer",
+      //  "AllowedScopes": []
+      //}
     },
     {
-      "DownstreamPathTemplate": "/api/Company/GetCompanyStock/{id}",
+      "DownstreamPathTemplate": "/api/Company/GetCompanyStock",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
@@ -68,14 +68,14 @@
         "PeriodTimespan": 1,
         "Limit": 1
       },
-      "UpstreamPathTemplate": "/api/Company/GetCompanyStock/{id}",
+      "UpstreamPathTemplate": "/api/Company/GetCompanyStock",
       "UpstreamHttpMethod": [
-        "GET"
-      ],
-      "AuthenticationOptions": {
-        "AuthenticationProviderKey": "Bearer",
-        "AllowedScopes": []
-      }
+        "POST"
+      ]
+      //"AuthenticationOptions": {
+      //  "AuthenticationProviderKey": "Bearer",
+      //  "AllowedScopes": []
+      //}
     },
     {
       "DownstreamPathTemplate": "/api/Stock",
@@ -94,11 +94,11 @@
       "UpstreamHttpMethod": [
         "POST",
         "GET"
-      ],
-      "AuthenticationOptions": {
-        "AuthenticationProviderKey": "Bearer",
-        "AllowedScopes": []
-      }
+      ]
+      //"AuthenticationOptions": {
+      //  "AuthenticationProviderKey": "Bearer",
+      //  "AllowedScopes": []
+      //}
     },
     {
       "DownstreamPathTemplate": "/api/Stock/{id}",
@@ -121,11 +121,11 @@
       "UpstreamPathTemplate": "/api/Stock/{id}",
       "UpstreamHttpMethod": [
         "GET"
-      ],
-      "AuthenticationOptions": {
-        "AuthenticationProviderKey": "Bearer",
-        "AllowedScopes": []
-      }
+      ]
+      //"AuthenticationOptions": {
+      //  "AuthenticationProviderKey": "Bearer",
+      //  "AllowedScopes": []
+      //}
     },
     {
       "DownstreamPathTemplate": "/api/auth",
