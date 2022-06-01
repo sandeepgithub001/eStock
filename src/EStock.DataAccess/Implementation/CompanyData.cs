@@ -72,7 +72,12 @@ namespace EStock.DataAccess.Implementation
             objCompanyStock.Website = objCompany.Website;
             objCompanyStock.StockExchange = objCompany.StockExchange;
 
-            objCompanyStock.Stocks = _context.Stocks.Where(x => x.CompanyId == data.CompanyId).ToList();
+            objCompanyStock.Stocks = _context.Stocks.
+                                    Where(x => x.CompanyId == data.CompanyId &&
+                                    (
+                                        (x.StartDate <= Convert.ToDateTime(data.StartDate) && x.StartDate >= Convert.ToDateTime(data.EndDate)) ||
+                                        (x.EndDate <= Convert.ToDateTime(data.StartDate) && x.EndDate >= Convert.ToDateTime(data.EndDate))
+                                    )).ToList();
 
             return objCompanyStock;
         }

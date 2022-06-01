@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { switchMap } from 'rxjs';
@@ -22,6 +23,7 @@ export class CompanyDetailComponent implements OnInit {
   constructor(
     private companyService: CompanyService,
     private route: ActivatedRoute,
+    private datepipe: DatePipe,
   ) {
     this.route.paramMap.subscribe(params => {
       var id = params.get('id');
@@ -39,6 +41,11 @@ export class CompanyDetailComponent implements OnInit {
   }
 
   GetCompanyDetails(model: any) {
+    
+    model.startDate =  this.datepipe.transform(model.startDate, 'yyyy-MM-dd');
+    model.endDate = this.datepipe.transform(model.endDate, 'yyyy-MM-dd');
+
+    console.log(model);
     this.companyService.GetCompanyStock(model).subscribe(
       res => {
         this.ObjCompanyStock = res;

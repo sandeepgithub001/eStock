@@ -73,6 +73,11 @@ namespace EStock.Getway
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseCors(x => x
+            .AllowAnyOrigin()
+            .AllowAnyMethod()
+            .AllowAnyHeader());
+
             app.UseRouting();
 
             app.UseOcelot();
