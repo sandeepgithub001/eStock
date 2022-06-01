@@ -1,4 +1,3 @@
-// OrderProcessing/Ocelot.json
 {
   "Routes": [
     {
@@ -14,11 +13,14 @@
         "TtlSeconds": 30,
         "Region": "companycaching"
       },
-      "UpstreamPathTemplate": "/Company",
+      "UpstreamPathTemplate": "/api/Company",
       "UpstreamHttpMethod": [
-        "POST",
-        "GET"
-      ]
+        "POST", "GET"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
     },
     {
       "DownstreamPathTemplate": "/api/Company/{id}",
@@ -38,11 +40,15 @@
         "PeriodTimespan": 1,
         "Limit": 1
       },
-      "UpstreamPathTemplate": "/Company/{id}",
+      "UpstreamPathTemplate": "/api/Company/{id}",
       "UpstreamHttpMethod": [
         "GET",
         "DELETE"
-      ]
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
     },
     {
       "DownstreamPathTemplate": "/api/Company/GetCompanyStock/{id}",
@@ -62,10 +68,14 @@
         "PeriodTimespan": 1,
         "Limit": 1
       },
-      "UpstreamPathTemplate": "/Company/GetCompanyStock/{id}",
+      "UpstreamPathTemplate": "/api/Company/GetCompanyStock/{id}",
       "UpstreamHttpMethod": [
         "GET"
-      ]
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
     },
     {
       "DownstreamPathTemplate": "/api/Stock",
@@ -80,11 +90,15 @@
         "TtlSeconds": 30,
         "Region": "stockcaching"
       },
-      "UpstreamPathTemplate": "/Stock",
+      "UpstreamPathTemplate": "/api/Stock",
       "UpstreamHttpMethod": [
         "POST",
         "GET"
-      ]
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
     },
     {
       "DownstreamPathTemplate": "/api/Stock/{id}",
@@ -104,14 +118,28 @@
         "PeriodTimespan": 1,
         "Limit": 1
       },
-      "UpstreamPathTemplate": "/Stock/{id}",
+      "UpstreamPathTemplate": "/api/Stock/{id}",
       "UpstreamHttpMethod": [
         "GET"
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/auth",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": "5000"
+        }
+      ],
+      "UpstreamPathTemplate": "/api/auth",
+      "UpstreamHttpMethod": [
+        "POST"
       ]
     }
-  ],
-  "GlobalConfiguration": {
-    "RequestIdKey": "X-Correlation-Id",
-    "BaseUrl": "http://localhost:39469"
-  },
+  ]
 }
