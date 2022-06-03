@@ -5,7 +5,6 @@ using EStock.Services.Abstraction;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace BMS.Services.Implementation
@@ -36,7 +35,7 @@ namespace BMS.Services.Implementation
             {
                 _logger.LogError(ex.Message);
                 throw;
-            }       
+            }
         }
 
         public Task<Stock> GetStockById(int id)

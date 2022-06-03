@@ -25,7 +25,7 @@ namespace EStock.Models.Entities
         [Column(TypeName = "varchar")]
         [StringLength(50, ErrorMessage = "CompanyCEO cannot exceed 50 characters.")]
         public string CompanyCeo { get; set; }
-        
+
         [Required]
         [Column(TypeName = "varchar")]
         [StringLength(20, ErrorMessage = "Turnover cannot exceed 20 characters.")]

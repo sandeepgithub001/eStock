@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace EStock.DataAccess.Implementation
 {
-    public class StockData:IStockData
+    public class StockData : IStockData
     {
         private readonly EStockContext _context;
 

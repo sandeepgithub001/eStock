@@ -1,5 +1,4 @@
-﻿using EStock.Models;
-using EStock.Models.Entities;
+﻿using EStock.Models.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace EStock.DataAccess

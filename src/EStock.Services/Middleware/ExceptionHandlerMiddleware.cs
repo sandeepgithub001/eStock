@@ -1,9 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.Net;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace BMS.Services.Middleware
@@ -34,7 +32,7 @@ namespace BMS.Services.Middleware
             context.Response.ContentType = "application/json";
             int statusCode = (int)HttpStatusCode.InternalServerError;
             var result = JsonConvert.SerializeObject(new
-            {               
+            {
                 StatusCode = statusCode,
                 ErrorMessage = exception.Message
             });
