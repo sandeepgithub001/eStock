@@ -33,7 +33,7 @@ namespace EStock.Api.Controllers
             return Ok(result);
         }
 
-        // GET api/<CompanyController>/5
+        // GET api/<CompanyController>/GetCompanyStock
         [HttpPost("GetCompanyStock")]
         public async Task<IActionResult> GetCompanyStock([FromBody] CompanyStockRequest data)
         {

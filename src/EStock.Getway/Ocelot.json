@@ -31,14 +31,9 @@
           "Port": "5000"
         }
       ],
-      "RateLimitOptions": {
-        "ClientWhitelist": [
-
-        ],
-        "EnableRateLimiting": true,
-        "Period": "5s",
-        "PeriodTimespan": 1,
-        "Limit": 1
+      "FileCacheOptions": {
+        "TtlSeconds": 30,
+        "Region": "companycaching"
       },
       "UpstreamPathTemplate": "/api/Company/{id}",
       "UpstreamHttpMethod": [
@@ -59,14 +54,9 @@
           "Port": "5000"
         }
       ],
-      "RateLimitOptions": {
-        "ClientWhitelist": [
-
-        ],
-        "EnableRateLimiting": true,
-        "Period": "5s",
-        "PeriodTimespan": 1,
-        "Limit": 1
+      "FileCacheOptions": {
+        "TtlSeconds": 30,
+        "Region": "companystockcaching"
       },
       "UpstreamPathTemplate": "/api/Company/GetCompanyStock",
       "UpstreamHttpMethod": [
@@ -109,14 +99,9 @@
           "Port": "5000"
         }
       ],
-      "RateLimitOptions": {
-        "ClientWhitelist": [
-
-        ],
-        "EnableRateLimiting": true,
-        "Period": "5s",
-        "PeriodTimespan": 1,
-        "Limit": 1
+      "FileCacheOptions": {
+        "TtlSeconds": 30,
+        "Region": "stockcaching"
       },
       "UpstreamPathTemplate": "/api/Stock/{id}",
       "UpstreamHttpMethod": [

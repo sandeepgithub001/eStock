@@ -74,10 +74,7 @@ namespace EStock.DataAccess.Implementation
 
             objCompanyStock.Stocks = _context.Stocks.
                                     Where(x => x.CompanyId == data.CompanyId &&
-                                    (
-                                        (x.StartDate <= Convert.ToDateTime(data.StartDate) && x.StartDate >= Convert.ToDateTime(data.EndDate)) ||
-                                        (x.EndDate <= Convert.ToDateTime(data.StartDate) && x.EndDate >= Convert.ToDateTime(data.EndDate))
-                                    )).ToList();
+                                    (x.StartDate >= Convert.ToDateTime(data.StartDate) && x.EndDate <= Convert.ToDateTime(data.EndDate))).ToList();
 
             return objCompanyStock;
         }
