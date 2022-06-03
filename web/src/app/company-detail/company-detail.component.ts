@@ -11,8 +11,8 @@ import { CompanyService } from '../services/company.service';
 })
 export class CompanyDetailComponent implements OnInit {
   companyId: number = 0;
-  startDate: Date = new Date();
-  endDate: Date = new Date();
+  startDate: string;
+  endDate: string;
   ObjCompanyStock: any = {};
   ObjSearchModel: any = {};
 
@@ -25,6 +25,9 @@ export class CompanyDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private datepipe: DatePipe,
   ) {
+    var currentDate = new Date();
+    this.startDate = this.datepipe.transform(currentDate, "yyyy-MM-dd") ?? "";
+    this.endDate = this.datepipe.transform(currentDate, "yyyy-MM-dd") ?? "";
     this.route.paramMap.subscribe(params => {
       var id = params.get('id');
       this.companyId = id == null ? 0 : parseInt(id);
@@ -41,8 +44,8 @@ export class CompanyDetailComponent implements OnInit {
   }
 
   GetCompanyDetails(model: any) {
-    
-    model.startDate =  this.datepipe.transform(model.startDate, 'yyyy-MM-dd');
+
+    model.startDate = this.datepipe.transform(model.startDate, 'yyyy-MM-dd');
     model.endDate = this.datepipe.transform(model.endDate, 'yyyy-MM-dd');
 
     console.log(model);
@@ -51,14 +54,14 @@ export class CompanyDetailComponent implements OnInit {
         this.ObjCompanyStock = res;
         var stocks = res.stocks;
         var lowestNumber = stocks[0].stockPrice;
-        var highestNumber = stocks[0].stockPrice;    
-        
+        var highestNumber = stocks[0].stockPrice;
+
         stocks.forEach(function (keyValue: { stockPrice: number; }, index: number, stocks: any) {
-          if(index > 0) {
-            if(keyValue.stockPrice < lowestNumber){
+          if (index > 0) {
+            if (keyValue.stockPrice < lowestNumber) {
               lowestNumber = keyValue.stockPrice;
             }
-            if(keyValue.stockPrice > highestNumber) {
+            if (keyValue.stockPrice > highestNumber) {
               highestNumber = keyValue.stockPrice;
             }
           }
@@ -69,7 +72,7 @@ export class CompanyDetailComponent implements OnInit {
           sum += parseInt(stocks[i].stockPrice, 10); //don't forget to add the base
         }
 
-        var avg = sum/stocks.length;
+        var avg = sum / stocks.length;
 
         this.objMin = lowestNumber;
         this.objMax = highestNumber;

@@ -25,19 +25,23 @@ export class UpdateStockComponent implements OnInit {
     private route: ActivatedRoute,
   ) {
     this.route.paramMap.subscribe(params => {
-      var id = params.get('id');
+      let id = params.get('id');
       this.companyId = id == null ? 0 : parseInt(id);
     });
   }
 
   ngOnInit(): void {
+    let currentDate = new Date();
+    let startDate = this.datepipe.transform(currentDate, "yyyy-MM-dd") ?? "";
+    let endDate = this.datepipe.transform(currentDate, "yyyy-MM-dd") ?? "";
+
     this.ObjForm = this.fb.group({
       id: [0],
       companyId: [this.companyId, [Validators.required]],
       companyName: ['', [Validators.required]],
       stockPrice: ['', [Validators.required]],
-      startDate: [new Date()],
-      endDate: [new Date()],
+      startDate: [startDate],
+      endDate: [endDate],
     });
     if (this.companyId > 0) {
       this.GetCompanyById(this.companyId);
@@ -82,17 +86,6 @@ export class UpdateStockComponent implements OnInit {
         console.log(error);
       });
   }
-
-  GetCompanyList() {
-    this.companyService.GetCompanyList().subscribe(
-      res => {
-        this.objCompanies = res;
-      },
-      error => {
-        console.log(error);
-      });
-  }
-
 
   onCancel(ev: any) {
     this.router.navigate(['/company/', this.companyId]);

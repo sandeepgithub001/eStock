@@ -5,7 +5,7 @@
                 <label class=" mr-sm-2">Company:</label>
             </div>
             <div class="col-md-auto">                
-                <input type="email" class="form-control mb-2 mr-sm-2" formControlName="companyName" readonly>
+                <input type="text" class="form-control mb-2 mr-sm-2" formControlName="companyName" readonly>
             </div>
         </div>
         <div class="row">
@@ -13,7 +13,7 @@
                 <label class=" mr-sm-2">Stock Price:</label>
             </div>
             <div class="col-md-auto">                
-                <input type="email" class="form-control mb-2 mr-sm-2" formControlName="stockPrice">
+                <input type="number" class="form-control mb-2 mr-sm-2" formControlName="stockPrice">
                 <div *ngIf="submitted && form['stockPrice'].errors" class="error">
                     <div *ngIf="form['stockPrice'].errors['required']">
                         This field is required
