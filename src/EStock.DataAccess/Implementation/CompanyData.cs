@@ -50,8 +50,13 @@ namespace EStock.DataAccess.Implementation
 
         public async Task<int> DeleteCompanyRecord(int id)
         {
-            var entity = await _context.Companies.FirstOrDefaultAsync(t => t.Id == id);
-            _context.Companies.Remove(entity);
+            var company = await _context.Companies.FirstOrDefaultAsync(t => t.Id == id);
+            if (company != null)
+            {
+                var lstStock = _context.Stocks.Where(x => x.CompanyId == id).ToList();
+                _context.Stocks.RemoveRange(lstStock);
+            }
+            _context.Companies.Remove(company);
             return _context.SaveChanges();
         }
 
