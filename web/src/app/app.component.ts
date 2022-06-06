@@ -24,7 +24,12 @@ export class AppComponent implements OnInit {
   }
 
   OnButtonSearchClick() {
-    this.router.navigate(['/company/', this.objCompanyId])
+    if (this.objCompanyId > 0) {
+      this.router.navigate(['company/', this.objCompanyId])
+        .then(() => {
+          window.location.reload();
+        });
+    }
   }
 
   GetCompanyList() {
