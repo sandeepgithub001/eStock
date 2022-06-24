@@ -3,6 +3,7 @@ using BMS.Services.Middleware;
 using EStock.DataAccess;
 using EStock.DataAccess.Abstraction;
 using EStock.DataAccess.Implementation;
+using EStock.Models;
 using EStock.Services.Abstraction;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -28,14 +29,17 @@ namespace EStock.Api
         {
 
             services.AddControllers();
+            AppSettings.ConnectionStrings = Configuration.GetConnectionString("DefaultConnection");
+            //services.GetConfiguaration(Configuration);
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "EStock.Api", Version = "v1" });
             });
 
-            services.AddDbContext<EStockContext>(options =>
-                options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection"))
-                );
+            services.AddDbContext<EStockContext>(options => 
+                options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection"), 
+                providerOptions => providerOptions.EnableRetryOnFailure())
+               );
 
             services.AddTransient<IRequestProcessor, RequestProcessor>()
                     .AddTransient<IStockData, StockData>()
@@ -45,10 +49,10 @@ namespace EStock.Api
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            //using (var serviceScope = app.ApplicationServices.CreateScope())
-            //{
-            //    serviceScope.ServiceProvider.GetService<EStockContext>().Database.Migrate();
-            //}
+            using (var serviceScope = app.ApplicationServices.CreateScope())
+            {
+                serviceScope.ServiceProvider.GetService<EStockContext>().Database.Migrate();
+            }
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -71,6 +75,14 @@ namespace EStock.Api
             {
                 endpoints.MapControllers();
             });
+        }
+    }
+    public static class UserAppSetting
+    {
+        public static IServiceCollection GetConfiguaration(this IServiceCollection services, IConfiguration configuration)
+        {
+            _ = configuration.GetSection("AppSettings").Get<AppSettings>();
+            return services;
         }
     }
 }

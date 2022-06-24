@@ -1,0 +1,30 @@
+version: '3.4'
+
+services:
+  estock.getway:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    depends_on: 
+      - estock.api
+    ports:
+      - "8001:80"
+
+  estock.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=host=estock.db;database=estock;User Id=postgres;Password=admin@123
+    depends_on: 
+      - estock.db
+    ports:
+      - "8000:80"
+
+  estock.db:
+    ports:
+      - '5432:5432'
+    container_name: estock-postgres
+    restart: always
+    environment:
+      - POSTGRES_PASSWORD=admin@123
+    image: 'postgres'
+
+

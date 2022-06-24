@@ -1,5 +1,7 @@
-﻿using EStock.Models.Entities;
+﻿using EStock.Models;
+using EStock.Models.Entities;
 using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace EStock.DataAccess
 {
@@ -12,8 +14,17 @@ namespace EStock.DataAccess
         public DbSet<Company> Companies { get; set; }
         public DbSet<Stock> Stocks { get; set; }
 
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //{
+        //    optionsBuilder.UseNpgsql(AppSettings.ConnectionStrings, builder =>
+        //    {
+        //        builder.EnableRetryOnFailure(5, TimeSpan.FromSeconds(10), null);
+        //    });
+        //    base.OnConfiguring(optionsBuilder);
+        //}
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-            => optionsBuilder.UseNpgsql("Host=127.0.0.1;Database=estock;User id=postgres;Password=admin@123");
+           => optionsBuilder.UseNpgsql(AppSettings.ConnectionStrings);
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

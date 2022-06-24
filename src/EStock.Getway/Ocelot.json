@@ -6,7 +6,7 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": "5000"
+          "Port": "8000"
         }
       ],
       "FileCacheOptions": {
@@ -17,10 +17,6 @@
       "UpstreamHttpMethod": [
         "POST", "GET"
       ]
-      //"AuthenticationOptions": {
-      //  "AuthenticationProviderKey": "Bearer",
-      //  "AllowedScopes": []
-      //}
     },
     {
       "DownstreamPathTemplate": "/api/Company/{id}",
@@ -28,7 +24,7 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": "5000"
+          "Port": "8000"
         }
       ],
       "FileCacheOptions": {
@@ -40,10 +36,6 @@
         "GET",
         "DELETE"
       ]
-      //"AuthenticationOptions": {
-      //  "AuthenticationProviderKey": "Bearer",
-      //  "AllowedScopes": []
-      //}
     },
     {
       "DownstreamPathTemplate": "/api/Company/GetCompanyStock",
@@ -51,7 +43,7 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": "5000"
+          "Port": "8000"
         }
       ],
       "FileCacheOptions": {
@@ -62,10 +54,6 @@
       "UpstreamHttpMethod": [
         "POST"
       ]
-      //"AuthenticationOptions": {
-      //  "AuthenticationProviderKey": "Bearer",
-      //  "AllowedScopes": []
-      //}
     },
     {
       "DownstreamPathTemplate": "/api/Stock",
@@ -73,7 +61,7 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": "5000"
+          "Port": "8000"
         }
       ],
       "FileCacheOptions": {
@@ -85,10 +73,6 @@
         "POST",
         "GET"
       ]
-      //"AuthenticationOptions": {
-      //  "AuthenticationProviderKey": "Bearer",
-      //  "AllowedScopes": []
-      //}
     },
     {
       "DownstreamPathTemplate": "/api/Stock/{id}",
@@ -96,7 +80,7 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": "5000"
+          "Port": "8000"
         }
       ],
       "FileCacheOptions": {
@@ -107,10 +91,6 @@
       "UpstreamHttpMethod": [
         "GET"
       ]
-      //"AuthenticationOptions": {
-      //  "AuthenticationProviderKey": "Bearer",
-      //  "AllowedScopes": []
-      //}
     },
     {
       "DownstreamPathTemplate": "/api/auth",
@@ -118,7 +98,7 @@
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
-          "Port": "5000"
+          "Port": "8000"
         }
       ],
       "UpstreamPathTemplate": "/api/auth",
