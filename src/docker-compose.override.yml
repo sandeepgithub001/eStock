@@ -7,7 +7,7 @@ services:
     depends_on: 
       - estock.api
     ports:
-      - "8001:80"
+      - "8002:80"
 
   estock.api:
     environment:
@@ -19,12 +19,13 @@ services:
       - "8000:80"
 
   estock.db:
-    ports:
-      - '5432:5432'
     container_name: estock-postgres
     restart: always
+    image: 'postgres'
+    ports:
+      - '5432:5432'
     environment:
       - POSTGRES_PASSWORD=admin@123
-    image: 'postgres'
+    
 
 

@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: estockapi-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: estock-api
+  template:
+    metadata:
+      labels:
+        app: estock-api
+    spec:
+      containers:
+      - name: estock-api
+        image: 9005011542/estock-api:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80
+        env:
+          - name: ASPNETCORE_ENVIRONMENT
+            value: Development
+          - name: ConnectionStrings__DefaultConnection
+            value: postgresdb://postgres-service:5432
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: estockapi-service
+spec:
+  type: NodePort
+  selector:
+    app: estockapi
+  ports:
+  - port: 8000
+    targetPort: 80
+    NodePort: 31000

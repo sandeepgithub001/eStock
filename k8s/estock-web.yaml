@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: angular-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: estock-web
+  template:
+    metadata:
+      labels:
+        app: estock-web
+    spec:
+      containers:
+      - name: estock-web
+        image: 9005011542/estock-web:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80
+        env:
+          - name: ASPNETCORE_ENVIRONMENT
+            value: Development
+          - name: ConnectionStrings__DefaultConnection
+            value: postgresdb://postgres-service:5432
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: angular-service
+spec:
+  type: NodePort
+  selector:
+    app: angular
+  ports:
+  - port: 80
+    targetPort: 80
+    NodePort: 31000

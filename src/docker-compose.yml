@@ -12,17 +12,13 @@ services:
     build:
       context: .
       dockerfile: EStock.Api/Dockerfile
-
+  
   estock.db:
+    container_name: estock-postgres
+    image: 'postgres'
+    restart: always
     ports:
       - '5432:5432'
-    container_name: estock-postgres
-    restart: always
     environment:
       - POSTGRES_PASSWORD=admin@123
-    #volumes:
-    #   - 'estock.db-volume:/var/lib/postgresql/data'
-    image: 'postgres'
-    #networks:
-    #  - estock-network
-
+    
