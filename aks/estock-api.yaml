@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: estockapi-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: estock-api
+  template:
+    metadata:
+      labels:
+        app: estock-api
+    spec:
+      containers:
+        - name: estock-api
+          image: estockacr2022.azurecr.io/estock-api:v1
+          imagePullPolicy: IfNotPresent        
+          ports:
+            - containerPort: 80
+          env:
+            - name: ASPNETCORE_ENVIRONMENT
+              value: Development
+            - name: ConnectionStrings__DefaultConnection
+              value: postgresdb://postgres-service:5432
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+      imagePullSecrets:
+        - name: acr-secret
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: estockapi-service
+spec:
+  selector:
+    app: estockapi
+  ports:
+  - port: 80
