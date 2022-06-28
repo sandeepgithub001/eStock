@@ -1,24 +1,18 @@
 version: '3.4'
 
 services:
+  estock.api:
+    image: ${DOCKER_REGISTRY-}estockapi
+    build:
+      context: .
+      dockerfile: EStock.Api/Dockerfile
+
+  estockdb:
+    image: postgres:latest
+
   estock.getway:
-    image: ${DOCKER_REGISTRY-}estock-getway
+    image: ${DOCKER_REGISTRY-}estockgetway
     build:
       context: .
       dockerfile: EStock.Getway/Dockerfile
 
-  estock.api:
-    image: ${DOCKER_REGISTRY-}estock-api
-    build:
-      context: .
-      dockerfile: EStock.Api/Dockerfile
-  
-  estock.db:
-    container_name: estock-postgres
-    image: 'postgres'
-    restart: always
-    ports:
-      - '5432:5432'
-    environment:
-      - POSTGRES_PASSWORD=admin@123
-    

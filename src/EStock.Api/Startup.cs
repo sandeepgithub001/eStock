@@ -3,7 +3,6 @@ using BMS.Services.Middleware;
 using EStock.DataAccess;
 using EStock.DataAccess.Abstraction;
 using EStock.DataAccess.Implementation;
-using EStock.Models;
 using EStock.Services.Abstraction;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -29,17 +28,14 @@ namespace EStock.Api
         {
 
             services.AddControllers();
-            AppSettings.ConnectionStrings = Configuration.GetConnectionString("DefaultConnection");
-            //services.GetConfiguaration(Configuration);
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "EStock.Api", Version = "v1" });
             });
 
-            services.AddDbContext<EStockContext>(options => 
-                options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection"), 
-                providerOptions => providerOptions.EnableRetryOnFailure())
-               );
+            services.AddDbContext<EStockContext>(options =>
+                options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection"))
+                );
 
             services.AddTransient<IRequestProcessor, RequestProcessor>()
                     .AddTransient<IStockData, StockData>()
@@ -56,9 +52,10 @@ namespace EStock.Api
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "EStock.Api v1"));
             }
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "EStock.Api v1"));
 
             app.UseCors(x => x
            .AllowAnyOrigin()
@@ -75,14 +72,6 @@ namespace EStock.Api
             {
                 endpoints.MapControllers();
             });
-        }
-    }
-    public static class UserAppSetting
-    {
-        public static IServiceCollection GetConfiguaration(this IServiceCollection services, IConfiguration configuration)
-        {
-            _ = configuration.GetSection("AppSettings").Get<AppSettings>();
-            return services;
         }
     }
 }

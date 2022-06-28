@@ -5,8 +5,8 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": "8000"
+          "Host": "EstockApi",
+          "Port": "80"
         }
       ],
       "FileCacheOptions": {
@@ -17,14 +17,18 @@
       "UpstreamHttpMethod": [
         "POST", "GET"
       ]
+      //"AuthenticationOptions": {
+      //  "AuthenticationProviderKey": "Bearer",
+      //  "AllowedScopes": []
+      //}
     },
     {
       "DownstreamPathTemplate": "/api/Company/{id}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": "8000"
+          "Host": "EstockApi",
+          "Port": "80"
         }
       ],
       "FileCacheOptions": {
@@ -36,14 +40,18 @@
         "GET",
         "DELETE"
       ]
+      //"AuthenticationOptions": {
+      //  "AuthenticationProviderKey": "Bearer",
+      //  "AllowedScopes": []
+      //}
     },
     {
       "DownstreamPathTemplate": "/api/Company/GetCompanyStock",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": "8000"
+          "Host": "EstockApi",
+          "Port": "80"
         }
       ],
       "FileCacheOptions": {
@@ -54,14 +62,18 @@
       "UpstreamHttpMethod": [
         "POST"
       ]
+      //"AuthenticationOptions": {
+      //  "AuthenticationProviderKey": "Bearer",
+      //  "AllowedScopes": []
+      //}
     },
     {
       "DownstreamPathTemplate": "/api/Stock",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": "8000"
+          "Host": "EstockApi",
+          "Port": "80"
         }
       ],
       "FileCacheOptions": {
@@ -73,14 +85,18 @@
         "POST",
         "GET"
       ]
+      //"AuthenticationOptions": {
+      //  "AuthenticationProviderKey": "Bearer",
+      //  "AllowedScopes": []
+      //}
     },
     {
       "DownstreamPathTemplate": "/api/Stock/{id}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": "8000"
+          "Host": "EstockApi",
+          "Port": "80"
         }
       ],
       "FileCacheOptions": {
@@ -91,14 +107,18 @@
       "UpstreamHttpMethod": [
         "GET"
       ]
+      //"AuthenticationOptions": {
+      //  "AuthenticationProviderKey": "Bearer",
+      //  "AllowedScopes": []
+      //}
     },
     {
       "DownstreamPathTemplate": "/api/auth",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "localhost",
-          "Port": "8000"
+          "Host": "EstockApi",
+          "Port": "80"
         }
       ],
       "UpstreamPathTemplate": "/api/auth",

@@ -3,7 +3,7 @@
   <PropertyGroup Label="Globals">
     <ProjectVersion>2.1</ProjectVersion>
     <DockerTargetOS>Linux</DockerTargetOS>
-    <ProjectGuid>58ec412f-e3a4-4a86-bc96-9dce61ebc54a</ProjectGuid>
+    <ProjectGuid>c3e9412c-8848-4ca7-9f41-dee6d360c33b</ProjectGuid>
     <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
     <DockerServiceUrl>{Scheme}://localhost:{ServicePort}/swagger</DockerServiceUrl>
     <DockerServiceName>estock.api</DockerServiceName>
