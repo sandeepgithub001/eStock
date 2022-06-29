@@ -24,7 +24,7 @@ spec:
             - name: ASPNETCORE_ENVIRONMENT
               value: Development
             - name: ConnectionStrings__DefaultConnection
-              value: postgresdb://postgres-service:5432
+              value: server=postgres-service;database=estockdb;User Id=SA;Password=pass@word1;Pooling=false
           resources:
             limits:
               memory: "128Mi"

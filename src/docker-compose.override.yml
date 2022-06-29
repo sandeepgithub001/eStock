@@ -5,6 +5,7 @@ services:
     container_name: EstockApi
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=server=estockdb;database=estockdb;User Id=SA;Password=pass@word1;Pooling=false
     depends_on:
       - "estockdb"
     ports:
