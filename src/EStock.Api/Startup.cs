@@ -3,6 +3,7 @@ using BMS.Services.Middleware;
 using EStock.DataAccess;
 using EStock.DataAccess.Abstraction;
 using EStock.DataAccess.Implementation;
+using EStock.Models;
 using EStock.Services.Abstraction;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -28,6 +29,7 @@ namespace EStock.Api
         {
 
             services.AddControllers();
+            AppSettings.ConnectionStrings = Configuration.GetConnectionString("DefaultConnection");
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "EStock.Api", Version = "v1" });

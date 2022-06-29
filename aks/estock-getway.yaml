@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: estockgetway-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: estock-getway
+  template:
+    metadata:
+      labels:
+        app: estock-getway
+    spec:
+      containers:
+      - name: estock-getway
+        image: testacrdocker.azurecr.io/estock-getway:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8001
+        env:
+          - name: ASPNETCORE_ENVIRONMENT
+            value: Development
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+      imagePullSecrets:
+        - name: acr-secret
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: estockgetway-service
+spec:
+  selector:
+    app: estockgetway
+  ports:
+  - port: 80

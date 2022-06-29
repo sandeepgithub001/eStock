@@ -1,4 +1,5 @@
-﻿using EStock.Models.Entities;
+﻿using EStock.Models;
+using EStock.Models.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace EStock.DataAccess
@@ -13,7 +14,7 @@ namespace EStock.DataAccess
         public DbSet<Stock> Stocks { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-            => optionsBuilder.UseNpgsql("Host=estockdb; Port=5432;User Id=SA;Password=pass@word1;Database=estockdb;");
+            => optionsBuilder.UseNpgsql(AppSettings.ConnectionStrings);
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
