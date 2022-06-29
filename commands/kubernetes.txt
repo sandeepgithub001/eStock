@@ -1,0 +1,49 @@
+az acr create --name testacrdocker --resource-group explore-docker-aks-rg --sku basic --admin-enabled
+
+az acr list --resource-group explore-docker-aks-rg --query "[].{acrLoginServer:loginServer}" --output table
+
+testacrdocker.azurecr.io
+
+docker tag 9005011542/estock-api testacrdocker.azurecr.io/estock-api
+docker tag 9005011542/estock-getway testacrdocker.azurecr.io/estock-getway
+docker tag 9005011542/estock-web:v1 testacrdocker.azurecr.io/estock-web:v1
+
+az acr login --name testacrdocker
+
+docker push testacrdocker.azurecr.io/estock-api
+docker push testacrdocker.azurecr.io/estock-getway
+docker push testacrdocker.azurecr.io/estock-web:v1
+
+-------------Commented---------
+az aks get-credentials --resource-group explore-docker-aks-rg --name explore-docker-aks
+az aks update --name explore-docker-aks --resource-group explore-docker-aks-rg --attach-acr testacrdocker
+-------------------------------
+Error--
+Waiting for AAD role to propagate[################################    ]  90.0000%Could not create a role assignment for ACR. Are you an Owner on this subscription?
+
+az account set --subscription 738279a4-6fa8-497d-a994-c85f3ec01ea2
+az acr import --name testacrdocker --source docker.io/library/nginx:latest --image nginx:v1
+
+az acr repository list --name testacrdocker --output table
+
+
+az aks create --resource-group explore-docker-aks-rg --name myAKSCluster --node-count 1 --generate-ssh-keys --attach-acr testacrdocker
+
+az aks create -n aks-demo -g explore-docker-aks-rg --enable-managed-identity --attach-acr testacrdocker --node-count 1
+az aks update -n myAKSCluster -g explore-docker-aks-rg --enable-managed-identity --attach-acr testacrdocker
+az aks update -n myAKSCluster -g explore-docker-aks-rg --attach-acr testacrdocker
+
+az aks install-cli
+
+az aks get-credentials --resource-group explore-docker-aks-rg --name myAKSCluster
+
+kubectl create secret docker-registry acr-secret --docker-server=testacrdocker.azurecr.io --docker-username=testacrdocker --docker-password=UULx6ewI5NPwDfzVdBlFXpaeJi=PSfjt
+
+
+
+
+
+
+
+
+

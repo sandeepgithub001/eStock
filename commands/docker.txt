@@ -1,0 +1,13 @@
+Docker Commands:
+
+// build an image using Dockerfile
+docker build -t estock-api .
+
+// run the image as a container
+docker run -p 80:80 estock-api:v1
+
+// tag the image as a container
+docker tag <tag> 9005011542/estock-web:v1
+
+// push the image to container
+docker push 9005011542/estock-api
