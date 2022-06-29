@@ -6,16 +6,18 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: estock-getway
+      app: estockgetway-deployment
   template:
     metadata:
       labels:
-        app: estock-getway
+        app: estockgetway-deployment
     spec:
+      imagePullSecrets:
+        - name: acr-secret
       containers:
       - name: estock-getway
         image: testacrdocker.azurecr.io/estock-getway:latest
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: Always
         ports:
         - containerPort: 8001
         env:
@@ -25,8 +27,6 @@ spec:
           limits:
             memory: "128Mi"
             cpu: "500m"
-      imagePullSecrets:
-        - name: acr-secret
 ---
 apiVersion: v1
 kind: Service
@@ -34,6 +34,6 @@ metadata:
   name: estockgetway-service
 spec:
   selector:
-    app: estockgetway
+    app: estockgetway-deployment
   ports:
   - port: 80
