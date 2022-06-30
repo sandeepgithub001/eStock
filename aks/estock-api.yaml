@@ -16,7 +16,7 @@ spec:
         - name: acr-secret
       containers:
         - name: estock-api
-          image: testacrdocker.azurecr.io/estock-api:latest
+          image: azestockacr.azurecr.io/estock-api:latest
           imagePullPolicy: Always        
           ports:
             - containerPort: 80

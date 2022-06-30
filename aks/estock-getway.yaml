@@ -16,10 +16,10 @@ spec:
         - name: acr-secret
       containers:
       - name: estock-getway
-        image: testacrdocker.azurecr.io/estock-getway:latest
+        image: azestockacr.azurecr.io/estock-getway:latest
         imagePullPolicy: Always
         ports:
-        - containerPort: 8001
+        - containerPort: 80
         env:
           - name: ASPNETCORE_ENVIRONMENT
             value: Development
@@ -33,6 +33,7 @@ kind: Service
 metadata:
   name: estockgetway-service
 spec:
+  type: LoadBalancer
   selector:
     app: estockgetway-deployment
   ports:

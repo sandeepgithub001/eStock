@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: nginx
-          image: testacrdocker.azurecr.io/nginx:v1
+          image: azestockacr.azurecr.io/nginx:v1
           imagePullPolicy: Always        
           ports:
             - containerPort: 80

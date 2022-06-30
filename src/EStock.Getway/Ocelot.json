@@ -5,7 +5,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "EstockApi",
+          "Host": "20.31.90.230",
           "Port": "80"
         }
       ],
@@ -27,7 +27,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "EstockApi",
+          "Host": "20.31.90.230",
           "Port": "80"
         }
       ],
@@ -50,7 +50,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "EstockApi",
+          "Host": "20.31.90.230",
           "Port": "80"
         }
       ],
@@ -72,7 +72,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "EstockApi",
+          "Host": "20.31.90.230",
           "Port": "80"
         }
       ],
@@ -95,7 +95,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "EstockApi",
+          "Host": "20.31.90.230",
           "Port": "80"
         }
       ],
@@ -117,7 +117,7 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "EstockApi",
+          "Host": "20.31.90.230",
           "Port": "80"
         }
       ],
